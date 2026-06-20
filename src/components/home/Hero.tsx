@@ -26,8 +26,7 @@ export const Hero: React.FC = () => {
               杨琳媛 | GLOBAL UX STRATEGIST
             </span>
             <h1 className="text-[56px] lg:text-[84px] font-semibold tracking-tighter leading-[0.95] mb-8 text-[#1d1d1f]">
-              全球化 UX <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1d1d1f] via-[#1d1d1f]/80 to-[#1d1d1f]/40">实战沉淀</span>
+              UX 作品集
             </h1>
           </motion.div>
 
@@ -38,7 +37,7 @@ export const Hero: React.FC = () => {
             className="space-y-6"
           >
             <h2 className="text-2xl lg:text-3xl font-medium tracking-tight text-black/80">
-              头部出海企业 + 海外办公经验
+              参加多个 UX 项目
             </h2>
             <p className="text-lg text-black/50 max-w-md font-light leading-relaxed">
               深耕跨境社交、工具、数字文创多赛道，熟悉国际化产品设计标准。

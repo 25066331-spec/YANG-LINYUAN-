@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion, useScroll, useSpring } from 'motion/react';
 import { projects } from '../data/projects';
-import { ArrowLeft, Sparkles, Brain, Activity, Search, Globe, Cpu, MessageSquare, TrendingUp, Zap, Eye, MousePointer2, ShieldCheck, Layers, UserCheck, Layout, Heart, Shield, Dumbbell, Dog } from 'lucide-react';
+import { ArrowLeft, Sparkles, Brain, Activity, Search, Globe, Cpu, MessageSquare, TrendingUp, Zap, Eye, MousePointer2, ShieldCheck, Layers, UserCheck, Layout, Heart, Shield, Dumbbell, Dog, Sun, Moon, Gauge, Key, Battery, Gamepad2, Compass, RefreshCw, Car, HelpCircle, ShieldAlert } from 'lucide-react';
 
 const ImageRenderer: React.FC<{ title: string; src: string; className?: string }> = ({ title, src, className = "" }) => {
   const [isZoomed, setIsZoomed] = React.useState(false);
@@ -87,6 +87,16 @@ export const ProjectDetail: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [id]);
+
+  // Shared state declarations for new premium interactive mockups (declared at top level)
+  const [activeCharacter, setActiveCharacter] = React.useState('helena');
+  const [fateGameTheme, setFateGameTheme] = React.useState('dark'); // 'dark' | 'light'
+  const [selectedOre, setSelectedOre] = React.useState('透光原石');
+  
+  const [cabinTemp, setCabinTemp] = React.useState(24);
+  const [energyLevel, setEnergyLevel] = React.useState(85);
+  const [injoyHmiScreen, setInjoyHmiScreen] = React.useState('map'); // 'map' | 'audio' | 'parking' | 'diagnostics'
+  const [activeNotification, setActiveNotification] = React.useState('weather_alert'); // 'weather_alert' | 'air_quality' | 'charging'
 
   if (!project) {
     return (
@@ -2142,297 +2152,27 @@ export const ProjectDetail: React.FC = () => {
                      <div className="space-y-4">
                         <h4 className="text-xl font-medium text-white/90">AI 执行摘要 (AI Executive Summary)：</h4>
                         <p className="text-base text-white/50 leading-relaxed font-light">
-                          “拒绝海量数据堆砌，通过 LLM（大语言模型） 对全店多维数据进行语义化抽提。将复杂的月收入、转化率等非结构化数据转化为直观的‘经营诊断语’，直接指出流量利用率不足的底层。”
-                        </p>
-                     </div>
-                     <div className="space-y-4">
-                        <h4 className="text-xl font-medium text-white/90">本土化运营洞察 (Localized Insights)</h4>
-                        <p className="text-base text-white/50 leading-relaxed font-light">
-                          “针对东南亚细分市场的复杂性，设计了具备本土化意识（Market-Aware）的策略引擎。系统能自动识别印尼免运费、菲律宾发薪日等大促节点，动态生成适配当地搜索习惯的 SEO 建议。”
-                        </p>
-                     </div>
-                  </div>
-               </div>
-
-               {/* 2. 交互亮点 */}
-               <div className="space-y-12">
-                  <div className="space-y-6">
-                     <h3 className="text-2xl font-medium text-white/40 flex items-center gap-6">
-                       <span className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center font-mono text-[10px]">02</span>
-                       交互亮点与 AI 逻辑 (Interaction Highlights)
-                     </h3>
-                  </div>
-                  <div className="space-y-12 pl-16 border-l border-white/5">
-                     <div className="space-y-4">
-                        <h4 className="text-xl font-medium text-white/90">策略卡片设计 (Actionable Strategy Cards)：</h4>
-                        <p className="text-base text-white/50 leading-relaxed font-light">
-                          通过优先级（Priority）标签引导卖家关注核心任务。界面不仅提供建议，更通过 “优化逻辑详情” 展示了 SEO 评分提升 15% 的量化预估，将 AI 的“黑盒”决策透明化。
-                        </p>
-                     </div>
-                     <div className="space-y-4">
-                        <h4 className="text-xl font-medium text-white/90">一键优化 (Seamless Execution)：</h4>
-                        <p className="text-base text-white/50 leading-relaxed font-light">
-                          设计原则： “最简操作路径（The Shortest Path to Success）”。通过 Before/After 的强对比视图，降低卖家的心理门槛。配合‘一键优化’功能，将复杂的 SEO 修改耗时从 30 分钟降至秒级，极大提升了中小型卖家的运营人效。”
-                        </p>
-                     </div>
-                     <div className="space-y-4">
-                        <h4 className="text-xl font-medium text-white/90">从“数据看板”到“诊断引擎”：</h4>
-                        <p className="text-base text-white/50 leading-relaxed font-light">
-                          “传统的 B 端后台往往面临‘信息过载’。我通过 AI 诊断中心实现了从 ‘用户找问题’ 到 ‘AI 推方案’ 的范式转移。通过渐进式披露（Progressive Disclosure），确保界面在信息密度与易用性之间达到动态平衡。”
+                          “拒绝海量数据堆砌，通过 LLM（大语言模型） 对全店多维数据进行语义化抽提。将复杂的月收入、转化率等非结构化数据转化为直观的‘经营诊断语’，直接指出流量利用率不足的底层原因。”
                         </p>
                      </div>
                   </div>
                </div>
             </div>
           </div>
-          <div className="sticky top-40">
-             <ImageRenderer title="AI Diagnostic Interface" src="/交互亮点与 AI 逻辑1.png" className="aspect-[3/4] shadow-[0_0_100px_rgba(0,0,0,0.6)]" />
+          
+          <div className="lg:sticky lg:top-24">
+            <ImageRenderer 
+              title="AI 诊断中心核心主页" 
+              src="/【工作台首页（Dashboard）】，.png" 
+              className="w-full aspect-[16/10] shadow-[0_0_80px_rgba(0,0,0,0.8)] border border-white/10"
+            />
+            <p className="text-[10px] font-mono text-white/40 mt-4 text-center">TikTok Shop 全球化经营诊断控制台 (AI Copilot Hub) / Click to Zoom</p>
           </div>
-        </div>
-      </section>
-
-      {/* 经营全景看板 */}
-      <section className="relative px-6 md:px-10 lg:px-24 py-32 lg:py-60 bg-white/[0.01]">
-        <div className="max-w-7xl mx-auto space-y-24 lg:space-y-32">
-           <div className="space-y-8">
-             <span className="text-[10px] font-mono tracking-[0.8em] text-white/20 uppercase">Business Intelligence</span>
-             <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tighter">经营全景看板</h2>
-           </div>
-
-           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-start">
-              <div className="lg:col-span-4 space-y-12">
-                 <div className="glass p-10 rounded-[3rem] border border-white/5 space-y-6">
-                    <h3 className="text-xl font-medium">核心定位</h3>
-                    <p className="text-base text-white/60 font-light leading-relaxed">
-                       多维经营数据的可视化降维与风险自动化识别。通过高度聚合的仪表盘，为全球卖家提供即时、透明的业务健康度检测。
-                    </p>
-                 </div>
-                 <div className="space-y-10 pl-4">
-                    <div className="space-y-3">
-                       <h4 className="text-lg font-medium text-white/90 flex items-center gap-4">
-                          <div className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-                          Research Insight
-                       </h4>
-                       <p className="text-sm text-white/40 leading-relaxed">
-                          在对 20 位头部卖家的 Shadowing 调研中，发现 85% 的用户无法快速从原始报表中提取决策。
-                       </p>
-                    </div>
-                    <div className="space-y-3">
-                       <h4 className="text-lg font-medium text-white/90">核心指标监控</h4>
-                       <p className="text-sm text-white/40 leading-relaxed">
-                          对总营收、转化率、访客数进行实时环比对比，建立直观的经营反馈闭环。
-                       </p>
-                    </div>
-                    <div className="space-y-3">
-                       <h4 className="text-lg font-medium text-white/90">全球销售表现与类目分布</h4>
-                       <p className="text-sm text-white/40 leading-relaxed">
-                          利用地理空间可视化，呈现东南亚各国的销售贡献权重及品类健康度。
-                       </p>
-                    </div>
-                    <div className="space-y-3">
-                       <h4 className="text-lg font-medium text-white/90 flex items-center gap-4">
-                          <TrendingUp className="w-4 h-4 text-purple-400" />
-                          趋势分析与风险预警
-                       </h4>
-                       <p className="text-sm text-white/40 leading-relaxed">
-                          实时对齐流量增长与营收转化的动态关联，从海量数据中打捞异常。
-                       </p>
-                    </div>
-                    <div className="space-y-4 border-t border-white/5 pt-8">
-                       <h5 className="text-[10px] font-mono tracking-widest text-white/20 uppercase">Composite Features</h5>
-                       <ul className="space-y-2 text-[12px] text-white/30 list-disc list-inside">
-                          <li>复合趋势分析与 Y 轴精度调试</li>
-                          <li>自动化风险因子识别与红区告警</li>
-                          <li>信息层级的优先级管理 (Less is More)</li>
-                       </ul>
-                    </div>
-                 </div>
-              </div>
-              <div className="lg:col-span-8">
-                 <ImageRenderer title="Global Dashboard Console" src="/经营全景看板1.png" className="aspect-[16/9] shadow-2xl" />
-              </div>
-           </div>
-        </div>
-      </section>
-
-      {/* 品牌资产聚合与服务质量 */}
-      <section className="relative px-6 md:px-10 lg:px-24 py-32 lg:py-60">
-        <div className="max-w-7xl mx-auto space-y-24 lg:space-y-32">
-           <div className="space-y-10">
-             <span className="text-[10px] font-mono tracking-[0.8em] text-white/20 uppercase">Brand & Reliability</span>
-             <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tighter leading-[1.1] max-w-4xl">
-               品牌资产聚合与服务质量（SLA）的数字化度量
-             </h2>
-           </div>
-
-           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-              <div className="space-y-12">
-                 <div className="space-y-8">
-                    <h3 className="text-2xl font-medium">核心定位</h3>
-                    <p className="text-lg text-white/70 font-light leading-relaxed">
-                       品牌资产聚合与服务质量（SLA）的数字化度量。通过结构化的信息布局，强化卖家的全球化品牌心智。
-                    </p>
-                 </div>
-                 <div className="grid grid-cols-2 gap-8">
-                    <div className="space-y-3">
-                       <h4 className="text-lg font-medium text-white/90">品牌身份与资产中心</h4>
-                       <p className="text-xs text-white/40 leading-relaxed">
-                          建立极具辨识度的全球认证卖家标识体系。通过核心视觉区隔锚定市场层级。
-                       </p>
-                    </div>
-                    <div className="space-y-3">
-                       <h4 className="text-lg font-medium text-white/90">店铺状态实时监控</h4>
-                       <p className="text-xs text-white/40 leading-relaxed">
-                          利用色彩语义化状态标签，提供稳定的经营体感，降低复杂决策的心理压力。
-                       </p>
-                    </div>
-                    <div className="space-y-3">
-                       <h4 className="text-lg font-medium text-white/90">关键服务指标可视化</h4>
-                       <p className="text-xs text-white/40 leading-relaxed">
-                          将“聊聊回复率”与“履约效率”提升至一级，作为卖家竞争力的核心抽象。
-                       </p>
-                    </div>
-                    <div className="space-y-3">
-                       <h4 className="text-lg font-medium text-white/90">健康度状态评估</h4>
-                       <p className="text-xs text-white/40 leading-relaxed">
-                          实现“从数字化到语意化”的演进，将复杂指标聚合成直观的健康等级结论。
-                       </p>
-                    </div>
-                 </div>
-                 <div className="p-8 rounded-[2.5rem] glass border border-white/10 flex flex-col gap-4">
-                    <div className="flex items-center gap-4">
-                       <Eye className="w-5 h-5 text-pink-400" />
-                       <h5 className="font-medium text-sm">B 端设计的“温度感”</h5>
-                    </div>
-                    <p className="text-xs text-white/40 font-light italic leading-relaxed">
-                       “引入更具颗粒度的卡片式布局与呼吸感微动效。通过对 Card-based UI 的网格化控制，确保了信息密度的平衡（Design Principle）。”
-                    </p>
-                 </div>
-              </div>
-              <ImageRenderer 
-                 title="Brand & Service Metrics" 
-                 src="/品牌资产聚合与服务质量（SLA）的数字化度量.png" 
-                 className="aspect-[4/5] shadow-2xl" 
-              />
-           </div>
-        </div>
-      </section>
-
-      {/* 区域市场情报与 AI 助手 */}
-      <section className="relative px-6 md:px-10 lg:px-24 py-32 lg:py-60">
-        <div className="max-w-7xl mx-auto space-y-24 lg:space-y-32">
-           <div className="space-y-8">
-             <span className="text-[10px] font-mono tracking-[0.8em] text-white/20 uppercase">Growth Engine</span>
-             <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tighter">区域市场情报与 AI 助手</h2>
-           </div>
-
-           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-start">
-              <div className="lg:col-span-7">
-                 <ImageRenderer title="Market Intel Console" src="/区域市场情报1.png" className="aspect-[16/10] shadow-[0_0_120px_rgba(0,0,0,0.4)]" />
-              </div>
-              <div className="lg:col-span-5 space-y-12">
-                 <div className="space-y-10">
-                    <div className="space-y-6">
-                       <h3 className="text-2xl font-medium flex items-center gap-6">
-                          <Globe className="w-6 h-6 text-cyan-400" />
-                          区域市场情报
-                       </h3>
-                       <p className="text-lg text-white/70 font-light leading-relaxed">
-                          针对东南亚各细分市场建立实时情建模。将宏观市场波动转化为量化的百分比增长提示，帮助卖家精准识别市场风口。
-                       </p>
-                    </div>
-                    <div className="space-y-10 pl-8 border-l border-white/5">
-                       <div className="space-y-3">
-                          <h4 className="text-lg font-medium text-white/90">市场热度实时映射</h4>
-                          <p className="text-sm text-white/40 leading-relaxed font-light">
-                             全天候观测区域搜索热词与流量趋势。AI 将杂乱的实时数据映射为直观的热力分布与热度波段。
-                          </p>
-                       </div>
-                       <div className="space-y-3">
-                          <h4 className="text-lg font-medium text-white/90">策略中心与 AI 经营助手</h4>
-                          <p className="text-sm text-white/40 leading-relaxed font-light">
-                             基于社交洞察的情报引擎，自动捕捉节点并推送“达人合作与爆款潜力挖掘”的差异化经营策略。
-                          </p>
-                       </div>
-                       <div className="space-y-3">
-                          <h4 className="text-lg font-medium text-white/90 flex items-center gap-4">
-                             <MessageSquare className="w-4 h-4 text-cyan-400" />
-                             对话式 AI 经营助手
-                          </h4>
-                          <p className="text-sm text-white/40 leading-relaxed font-light">
-                             从“被动呈现”到“主动应答”。具备上下文感知的 Copilot 能识别竞争态势并提供快捷指令，将复杂决策降维至对话级。
-                          </p>
-                       </div>
-                       <div className="space-y-3">
-                          <h4 className="text-lg font-medium text-white/90">模块化策略卡片</h4>
-                          <p className="text-sm text-white/40 leading-relaxed font-light">
-                             采用模块化策略，每张卡片承载一个核心动作，彻底解决传统 B 端界面的“策略丛林”与信息闭塞。
-                          </p>
-                       </div>
-                    </div>
-                 </div>
-                 <div className="glass p-10 rounded-[3rem] border border-cyan-500/10 bg-cyan-500/5 space-y-6 relative overflow-hidden group">
-                    <div className="absolute top-0 right-0 p-8">
-                       <Zap className="w-6 h-6 text-cyan-400 animate-pulse" />
-                    </div>
-                    <div className="text-[9px] font-mono tracking-widest text-cyan-400 uppercase">Business Impact</div>
-                    <div className="space-y-3">
-                       <div className="text-3xl font-medium tracking-tighter">Growth +22%</div>
-                       <p className="text-[13px] text-cyan-400/60 leading-relaxed">
-                          试点商家“爆款转化率”平均提升 22%，后台停留深度增加 15%，显著提升经营决策的科学性与执行效率。
-                       </p>
-                    </div>
-                 </div>
-              </div>
-           </div>
-        </div>
-      </section>
-
-      {/* 移动端界面展示 */}
-      <section className="relative px-6 md:px-10 lg:px-24 py-32 lg:py-60">
-        <div className="max-w-7xl mx-auto space-y-24 lg:space-y-32">
-           <div className="space-y-8 flex flex-col lg:flex-row lg:items-end justify-between gap-8">
-              <div className="space-y-6">
-                <span className="text-[10px] font-mono tracking-[0.8em] text-white/20 uppercase">Mobile Experience</span>
-                <h2 className="text-4xl md:text-5xl lg:text-7xl font-medium tracking-tighter leading-none">移动端界面展示</h2>
-              </div>
-              <div className="text-[10px] font-mono tracking-widest text-white/20 uppercase max-w-xs leading-relaxed text-right">
-                Immersive Mobile Showcase with Spatial Depth & Editorial Precision
-              </div>
-           </div>
-
-           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              <div className="md:col-span-2 md:row-span-2">
-                <ImageRenderer title="Mobile Overview" src="/mobile 1.png" className="w-full aspect-square md:aspect-auto h-full" />
-              </div>
-              <div className="md:col-span-1">
-                <ImageRenderer title="AI Insights" src="/mobile 2.png" className="w-full aspect-[4/5]" />
-              </div>
-              <div className="md:col-span-1">
-                <ImageRenderer title="Market Intel" src="/mobile 3.png" className="w-full aspect-[4/5]" />
-              </div>
-              <div className="md:col-span-1">
-                <ImageRenderer title="Dashboard" src="/mobile 4.png" className="w-full aspect-[4/5]" />
-              </div>
-              <div className="md:col-span-1">
-                <ImageRenderer title="Optimization" src="/mobile 5.png" className="w-full aspect-[4/5]" />
-              </div>
-              <div className="md:col-span-1">
-                <ImageRenderer title="Seller Hub" src="/mobile6.png" className="w-full aspect-[4/5]" />
-              </div>
-              <div className="md:col-span-2">
-                <ImageRenderer title="Sales Stats" src="/mobile 7.png" className="w-full aspect-[2/1]" />
-              </div>
-              <div className="md:col-span-1">
-                <ImageRenderer title="AI Chat" src="/mobile8.png" className="w-full aspect-[4/5]" />
-              </div>
-           </div>
         </div>
       </section>
 
       {/* FINAL EXIT */}
       <section className="relative h-[80vh] flex flex-col items-center justify-center border-t border-white/5 overflow-hidden">
-        <div className="absolute inset-0 aurora-glow opacity-10 pointer-events-none" />
         <motion.div
            initial={{ opacity: 0, scale: 0.9 }}
            whileInView={{ opacity: 1, scale: 1 }}
@@ -2441,12 +2181,12 @@ export const ProjectDetail: React.FC = () => {
            className="relative z-10 flex flex-col items-center gap-16 group cursor-pointer"
            onClick={() => navigate('/')}
         >
-          <div className="text-[10px] font-mono tracking-[2em] text-white/20 uppercase ml-12">Transmission Terminal</div>
-          <h2 className="text-4xl md:text-8xl font-medium tracking-tighter text-white/10 group-hover:text-white transition-all duration-1000 text-center px-10">
-            Exit Case Study
+          <div className="text-[10px] font-mono tracking-[2.5em] text-white/20 uppercase ml-12">Case Terminal</div>
+          <h2 className="text-4xl md:text-[10rem] font-bold tracking-[1.5rem] tracking-tighter text-white/5 group-hover:text-[#00F0FF] transition-all duration-1000 text-center px-10">
+            EXIT TIKTOK
           </h2>
-          <div className="w-20 h-20 rounded-full border border-white/10 flex items-center justify-center glass group-hover:border-cyan-400/40 group-hover:scale-110 transition-all duration-700">
-             <ArrowLeft className="w-6 h-6 rotate-180" />
+          <div className="w-20 h-20 rounded-full border border-white/10 flex items-center justify-center glass group-hover:border-cyan-400/40 group-hover:scale-110 transition-all duration-700 shadow-sm">
+             <ArrowLeft className="w-6 h-6 text-white/40 group-hover:text-[#00F0FF] transition-colors" />
           </div>
         </motion.div>
       </section>
@@ -2455,15 +2195,1468 @@ export const ProjectDetail: React.FC = () => {
       <footer className="px-10 py-32 border-t border-white/5 bg-black flex flex-col items-center gap-10">
          <div className="flex items-center gap-6">
             <div className="h-[1px] w-12 bg-white/10" />
-            <div className="text-[10px] font-mono tracking-[1.5em] text-white/20 uppercase">TikTok Global AI Diagnostic Center</div>
+            <div className="text-[10px] font-mono tracking-[1.5em] text-white/20 uppercase">TikTok Shop Global AI Copilot</div>
             <div className="h-[1px] w-12 bg-white/10" />
          </div>
-         <div className="text-[10px] font-mono text-white/5 uppercase text-center max-w-lg leading-relaxed tracking-[0.2em]">
-            This project is part of the TikTok Shop Global Design Evolution. All visual assets and strategic frameworks are proprietary property of the respective design systems. / 2026
+         <div className="text-[10px] font-mono text-white/40 uppercase text-center max-w-lg leading-relaxed tracking-[0.2em] font-light">
+            This project is part of the TikTok Shop Global Design Systems & AI Copilot initiatives. / 2026
          </div>
       </footer>
     </div>
   );
+}
+
+if (project.id === 'fate-mystery') {
+    return (
+      <div ref={containerRef} className="relative min-h-screen bg-[#070503] text-[#f7efe6] selection:bg-amber-500/30 font-sans overflow-x-hidden">
+        {/* Background Effects */}
+        <div className="fixed inset-0 z-0 pointer-events-none">
+          <div className="absolute top-[10%] right-[-10%] w-[60%] h-[60%] bg-amber-600/5 blur-[200px] rounded-full" />
+          <div className="absolute bottom-[20%] left-[-10%] w-[50%] h-[50%] bg-purple-900/5 blur-[250px] rounded-full" />
+          <div className="absolute inset-0 bg-[#000000]/80 mix-blend-color" />
+          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.25] contrast-150 brightness-75 mix-blend-overlay" />
+        </div>
+
+        {/* Progress Bar */}
+        <motion.div 
+          className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-amber-500 via-orange-600 to-purple-600 origin-left z-[1001]"
+          style={{ scaleX: smoothProgress }}
+        />
+
+        {/* Navigation */}
+        <nav className="fixed top-0 left-0 right-0 z-[1000] px-6 md:px-16 py-8 flex justify-between items-center bg-[#070503]/80 backdrop-blur-xl border-b border-orange-950/20">
+          <motion.button
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            onClick={() => navigate('/')}
+            className="flex items-center gap-4 group"
+          >
+            <div className="w-10 h-10 rounded-xl border border-orange-900/30 flex items-center justify-center glass group-hover:border-orange-500/50 transition-all duration-500 bg-orange-950/10">
+               <ArrowLeft className="w-4 h-4 text-orange-400/80 transition-transform group-hover:-translate-x-1.5" />
+            </div>
+            <span className="text-[10px] font-mono tracking-[0.5em] uppercase text-orange-400/50 group-hover:text-amber-300 transition-colors">Portfolio</span>
+          </motion.button>
+          <div className="hidden md:flex items-center gap-10">
+             <div className="text-[10px] font-mono tracking-[0.4em] text-orange-400/30 uppercase">Project / Detail / Fate Mystery</div>
+          </div>
+        </nav>
+
+        {/* Hero Section */}
+        <section className="relative min-h-screen flex items-center px-6 md:px-10 lg:px-24 pt-44 pb-20 overflow-hidden">
+          <div className="max-w-7xl mx-auto w-full space-y-16">
+             <motion.div
+               initial={{ opacity: 0, y: 50 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+               className="space-y-12"
+             >
+                <div className="space-y-6">
+                   <div className="flex items-center gap-4 text-amber-500">
+                     <span className="text-[10px] font-mono tracking-[0.8em] uppercase">Narrative-Driven AAA Game Battle Pass Proposal</span>
+                     <div className="h-[1px] w-24 bg-gradient-to-r from-amber-500 to-transparent" />
+                   </div>
+                   <h1 className="text-5xl md:text-8xl font-medium tracking-tighter leading-none text-[#ffecd1]">
+                     命运迷局 FATE MYSTERY
+                   </h1>
+                   <p className="text-xl md:text-2xl text-orange-300/60 font-light max-w-4xl leading-relaxed">
+                     融合经典“发条蒸汽朋克”与“以太古典秘学”的深邃美学范式。在局内引入心流状态监测（理智值 SAN 监测）与非线性双轨剧情解密，彻底打破拼图式解谜的零散桎梏。
+                   </p>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+                   <div className="lg:col-span-8 flex flex-col justify-between p-10 rounded-[2.5rem] border border-orange-950/40 bg-orange-950/5 backdrop-blur-xl space-y-8">
+                     <div className="space-y-4">
+                       <span className="text-xs font-mono tracking-widest text-[#ffaa44] uppercase">Strategic Paradigm</span>
+                       <h3 className="text-3xl font-medium text-amber-100">主动探索与非线性“占星盘”系统</h3>
+                       <p className="text-base text-orange-200/60 font-light leading-relaxed">
+                         《命运迷局》是一个颠覆传统的叙事驱动型 AAA 游戏战令系统概念提案。项目摒弃了机械线性的“打卡式”升级流程，开创性地将其重构为非线性、具备肉鸽探索感的“机械占星盘”大富翁机制。针对核心高净值玩家对同质化奖励的倦怠痛点，系统引入“理性与感性”双轨代币策略控步玩法，使每一次格子落位都能灼烧开雾并触发深度世界观解谜。项目以维多利亚未来主义的暗黑仪式感美学为外壳，实现跨平台无缝适配，让战令晋升成为一场充满宿命博弈与身份蜕变的沉浸式史诗冒险。
+                       </p>
+                     </div>
+                     <div className="grid grid-cols-3 gap-6 pt-4 border-t border-orange-950/20 text-center">
+                       <div>
+                         <p className="text-3xl font-mono text-[#ff8c00] font-semibold">35%</p>
+                         <p className="text-[10px] text-orange-200/40 uppercase tracking-widest mt-1">控制载荷降幅</p>
+                       </div>
+                       <div>
+                         <p className="text-3xl font-mono text-[#ff8c00] font-semibold">42%</p>
+                         <p className="text-[10px] text-orange-200/40 uppercase tracking-widest mt-1">决策摩擦优化</p>
+                       </div>
+                       <div>
+                         <p className="text-3xl font-mono text-[#ff8c00] font-semibold">D7 68%</p>
+                         <p className="text-[10px] text-orange-200/40 uppercase tracking-widest mt-1">高净值心流留存</p>
+                       </div>
+                     </div>
+                   </div>
+
+                   <div className="lg:col-span-4 rounded-[2.5rem] border border-orange-950/40 bg-gradient-to-b from-amber-500/10 to-purple-500/5 p-10 flex flex-col justify-between">
+                     <Gamepad2 className="w-12 h-12 text-[#ff9c3a] animate-pulse" />
+                     <div className="space-y-4 pt-16">
+                       <div className="text-[10px] font-mono tracking-widest text-orange-400">Core Paradigm Shift</div>
+                       <h4 className="text-xl font-medium text-amber-100">双轨代币策略控步</h4>
+                       <p className="text-sm text-orange-200/50 font-light leading-relaxed">
+                         摒弃简单物理打卡，将每一次决策演化为“理性”（步数精细把控）与“感性”（大跨度迷雾开雾）的宿命平衡博弈。
+                       </p>
+                     </div>
+                   </div>
+                </div>
+             </motion.div>
+          </div>
+        </section>
+
+        {/* Part 1: 项目介绍 */}
+        <section className="relative px-6 md:px-10 lg:px-24 py-20 border-t border-orange-950/15">
+          <div className="max-w-7xl mx-auto space-y-16">
+             <div className="space-y-4">
+                <span className="text-[10px] font-mono tracking-[0.8em] text-orange-500/40 uppercase">PART 01 // OVERVIEW</span>
+                <h2 className="text-4xl md:text-5xl font-medium text-amber-100 italic tracking-tight">项目核心介绍 Concept Blueprint</h2>
+             </div>
+             
+             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div className="lg:col-span-5 space-y-6">
+                   <p className="text-lg text-orange-100/90 leading-relaxed font-light">
+                     <strong>《命运迷局》</strong> 开创性地将叙事深度与战令系统相绑定。传统的升级只是重复单调的进度条行为，而在这里，整个迷局就是一张充满神秘机械美学的大富翁星图，用户既是解谜者也是局内棋子。
+                   </p>
+                   <div className="p-6 rounded-2xl border border-orange-950/30 bg-orange-950/10 space-y-3">
+                      <p className="text-xs text-orange-300 font-mono">美学外壳 Paradigm Aesthetic</p>
+                      <p className="text-xs text-orange-200/60 leading-relaxed font-light">
+                        本案采用维多利亚未来主义的暗黑仪式感作为界面内核，通过微晶显态的玻璃物理投影和雕版金辉拉丝，在屏幕指尖演绎非同一般的古典未来厚重感。
+                      </p>
+                   </div>
+                </div>
+                <div className="lg:col-span-7">
+                   <ImageRenderer 
+                     title="命运迷局 核心系统介绍图" 
+                     src="/命运迷局介绍图.png" 
+                     className="w-full aspect-[16/10] shadow-[0_0_80px_rgba(0,0,0,0.8)] border border-orange-900/20"
+                   />
+                </div>
+             </div>
+          </div>
+        </section>
+
+        {/* Part 2: 开始界面介绍 */}
+        <section className="relative px-6 md:px-10 lg:px-24 py-32 bg-[#0c0906]/60 border-t border-orange-950/15">
+          <div className="max-w-7xl mx-auto space-y-16">
+             <div className="space-y-4">
+                <span className="text-[10px] font-mono tracking-[0.8em] text-orange-500/40 uppercase">PART 02 // ONBOARDING GATEWAY</span>
+                <h2 className="text-4xl md:text-5xl font-medium text-amber-100 italic tracking-tight">安全认知网关与命途选择</h2>
+             </div>
+
+             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                <div className="lg:col-span-6 space-y-8">
+                   {/* Module 1 */}
+                   <div className="p-8 rounded-[2rem] border border-orange-950/30 bg-orange-950/5 space-y-6">
+                      <div className="flex items-center gap-3">
+                         <div className="w-2.5 h-6 bg-amber-500 rounded-full" />
+                         <h3 className="text-lg font-mono text-amber-100 tracking-wider">模块一：安全认知网关（登录/注册/用户协议）</h3>
+                      </div>
+
+                      <div className="space-y-4">
+                         <div className="space-y-2">
+                            <p className="text-xs font-mono uppercase text-red-400 flex items-center gap-2">
+                               <span>❌ 设计痛点 (Design Pain Points)</span>
+                            </p>
+                            <p className="text-xs text-orange-200/50 leading-relaxed font-light">
+                               <strong>低沉浸感与情绪断层：</strong>作为玩家进入游戏的第一道物理门槛，传统的账号登录、注册表单以及冗长的法务条款（用户协议）通常表现为冰冷的工业化界面，极易打断玩家在初始加载时建立的期待值，引发体验断层。
+                            </p>
+                            <p className="text-xs text-orange-200/50 leading-relaxed font-light">
+                               <strong>高流动性摩擦（Friction）与流失风险：</strong>移动端多字段的输入、高频呼起的全键盘，以及密密麻麻的合规条文，会瞬间拉高用户的认知负载（Cognitive Load）。新用户在此链路中容易产生抗拒心理，导致临门一脚的转化率流失。
+                            </p>
+                         </div>
+
+                         <div className="space-y-2 border-t border-orange-950/20 pt-4">
+                            <p className="text-xs font-mono uppercase text-emerald-400 flex items-center gap-2">
+                               <span>💡 设计思路 (Design Approach)</span>
+                            </p>
+                            <p className="text-xs text-orange-200/70 leading-relaxed font-light">
+                               <strong>语境重构与“法务叙事化”：</strong>彻底解构传统表单，将其重塑为“与秘社缔结契约”的解谜仪式。将账号/密码字段语义转译为 <strong>执局者印记</strong> 与 <strong>以太密码</strong>；将法务协议重构为《理智保障与执局契约》，把“被迫阅读”异化为“主动探索世界观”的入局体验。
+                            </p>
+                            <p className="text-xs text-orange-200/70 leading-relaxed font-light">
+                               <strong>渐进式认知降载与交互拦截：</strong>注册模块采用轻量化半透明浮层卡片（Sheet Drawer），配合直观的 Placeholder（占位符）示例，平滑引导输入。用户协议按钮增设“滚动激活”的物理阻尼逻辑，在确保法务绝对合规的前提下，通过仪式感消除界面的烦琐感。
+                            </p>
+                         </div>
+                      </div>
+                   </div>
+
+                   {/* Module 2 */}
+                   <div className="p-8 rounded-[2rem] border border-indigo-950/30 bg-purple-950/5 space-y-6">
+                      <div className="flex items-center gap-3">
+                         <div className="w-2.5 h-6 bg-purple-500 rounded-full" />
+                         <h3 className="text-lg font-mono text-purple-100 tracking-wider">模块二：命途选择矩阵（角色选择界面）</h3>
+                      </div>
+
+                      <div className="space-y-4">
+                         <div className="space-y-2">
+                            <p className="text-xs font-mono uppercase text-red-400 flex items-center gap-2">
+                               <span>❌ 设计痛点 (Design Pain Points)</span>
+                            </p>
+                            <p className="text-xs text-orange-200/50 leading-relaxed font-light">
+                               <strong>维度单一与情感轻量化：</strong>传统游戏的选角界面往往偏向纯视觉展示，角色之间的属性对比不够直观，玩家难以在短时间内感知到不同角色对后续游戏机制（如战令系统、流派走法）的深远影响。
+                            </p>
+                            <p className="text-xs text-orange-200/50 leading-relaxed font-light">
+                               <strong>缺乏决策阻尼与操作空间感：</strong>2D 扁平布局缺乏层次，核心行动点（CTA）不够聚焦，导致这一最具世界观分量的重要决策节点缺乏相应的“神圣仪式感”和空间纵深感。
+                            </p>
+                         </div>
+
+                         <div className="space-y-2 border-t border-purple-950/20 pt-4">
+                            <p className="text-xs font-mono uppercase text-emerald-400 flex items-center gap-2">
+                               <span>💡 设计思路 (Design Approach)</span>
+                            </p>
+                            <p className="text-xs text-orange-200/70 leading-relaxed font-light">
+                               <strong>双轨对立视差看板与多维数据可视化：</strong>界面采用 COGNITIVE CROSSROAD（命途交叉点）概念，通过红/灰、血月/星盘的强对比视觉建立“感性（海伦娜）”与“理性（施泰纳）”的宿命对立面。下方直接量化核心理智属性（MAX SAN）与直觉率，提供直观的决策数据支撑。
+                            </p>
+                            <p className="text-xs text-orange-200/70 leading-relaxed font-light">
+                               <strong>微光晕材质与终极决策锚定：</strong>整体框架采用 Micro Glassmorphic（微玻璃材质） 与背板模糊（Backdrop Blur），卡片引入空间视差动效（Spatial Motion）。底部的 <strong>确认选择并缔结宿命锁链</strong> 终极按钮配合双侧羽翼符文高亮，极大地拉满了玩家做出核心策略抉择时的触觉与心理反馈。
+                            </p>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+
+                <div className="lg:col-span-6 sticky top-24">
+                   <ImageRenderer 
+                     title="安全认知网关 & 角色选择界面" 
+                     src="/命运迷局游戏登录·注册·用户协议·角色选择界面.png" 
+                     className="w-full aspect-[16/10] shadow-[0_0_80px_rgba(0,0,0,0.9)] border border-orange-900/30"
+                   />
+                   <p className="text-[10px] font-mono text-orange-400/40 mt-4 text-center">命途选择矩阵：海伦娜直觉直落与施泰纳学术拼图界面 / Click to Zoom</p>
+                </div>
+             </div>
+          </div>
+        </section>
+
+        {/* Part 3: 状态拦截与星仪沙盘 */}
+        <section className="relative px-6 md:px-10 lg:px-24 py-32 border-t border-orange-950/15">
+          <div className="max-w-7xl mx-auto space-y-16">
+             <div className="space-y-4">
+                <span className="text-[10px] font-mono tracking-[0.8em] text-orange-500/40 uppercase">PART 03 // CLOCKWORK SYSTEM</span>
+                <h2 className="text-4xl md:text-5xl font-medium text-amber-100 italic tracking-tight">全息异步加载与因果发条星仪沙盘</h2>
+             </div>
+
+             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                <div className="lg:col-span-6 lg:order-2 space-y-8">
+                   {/* Module 1 */}
+                   <div className="p-8 rounded-[2rem] border border-orange-950/30 bg-orange-950/5 space-y-4">
+                      <h4 className="text-base font-mono text-[#ff8c00] tracking-wider uppercase">模块一：全息异步加载流（Loading State）</h4>
+                      <div className="space-y-3">
+                         <p className="text-xs text-orange-200/50 font-light leading-relaxed">
+                            <span className="text-red-400 font-semibold uppercase block pb-1">❌ 设计痛点 (Design Pain Points)</span>
+                            <strong>低效等待焦虑：</strong>传统进度条无法提供明确的“技术稳定性”与“剧情相关度”反馈，缺乏安全锚点，易让玩家产生焦躁感。
+                         </p>
+                         <p className="text-xs text-[#ffecd1]/70 font-light leading-relaxed">
+                            <span className="text-emerald-400 font-semibold uppercase block pb-1">💡 设计思路 (Design Approach)</span>
+                            在 <strong>`bc148a63b77b23fbc2d351bde1b70113.png`</strong> 异步流中，将加载包装为“以太纪元重合熔融中...”。引入 <strong>AETHER FUSION PROCESS: 114%</strong> 超载溢数值动效拦截物理通信延迟。底部常驻跟随加载进程智能平变的世界观历史文本低语。
+                         </p>
+                      </div>
+                   </div>
+
+                   {/* Module 2 */}
+                   <div className="p-8 rounded-[2rem] border border-orange-950/30 bg-orange-950/5 space-y-4">
+                      <h4 className="text-base font-mono text-[#ff8c00] tracking-wider uppercase">模块二：因果发条星仪沙盘（核心主界面 1 & 2）</h4>
+                      <div className="space-y-3">
+                         <p className="text-xs text-orange-200/50 font-light leading-relaxed">
+                            <span className="text-red-400 font-semibold uppercase block pb-1">❌ 设计痛点 (Design Pain Points)</span>
+                            <strong>非线性路径认知过载：</strong>大富翁肉鸽迷雾在方寸小屏对探索者视觉产生高频干扰，极易遮蔽沙盘重心引发频繁弹出/退出的触觉疲劳。
+                         </p>
+                         <p className="text-xs text-[#ffecd1]/70 font-light leading-relaxed">
+                            <span className="text-emerald-400 font-semibold uppercase block pb-1">💡 设计思路 (Design Approach)</span>
+                            <strong>F型纵向锚点布局：</strong>顶部常驻 SAN: 20/20 灵魂理智与铭文，核心区部署星盘迷局，粗细相间因果线建立极高易读性。右下角整合防滑落悬浮操作环。并引入 <strong>COGNITION DRAWER（半开式认知抽屉）</strong>。玩家上滑查看日契、签到、FAQ时，沙盘背景仅以透射模糊态隐约呈现，保持空间完整性。
+                         </p>
+                      </div>
+                   </div>
+
+                   {/* Module 3 */}
+                   <div className="p-8 rounded-[2rem] border border-orange-950/30 bg-orange-950/5 space-y-4">
+                      <h4 className="text-base font-mono text-[#ff8c00] tracking-wider uppercase">模块三：多维色彩无缝转译（亮色模式手机端）</h4>
+                      <div className="space-y-3">
+                         <p className="text-xs text-orange-200/50 font-light leading-relaxed">
+                            <span className="text-red-400 font-semibold uppercase block pb-1">❌ 设计痛点 (Design Pain Points)</span>
+                            强光户外下暗色容易大面积反光导致阅读崩溃。若简单反色会导致维多利亚古典格调流失为平凡。
+                         </p>
+                         <p className="text-xs text-[#ffecd1]/70 font-light leading-relaxed">
+                            <span className="text-emerald-400 font-semibold uppercase block pb-1">💡 设计思路 (Design Approach)</span>
+                            推出 <strong>“纸质明亮学者风 (Manuscript Bright)”</strong>。纸张底物转译为微显颗粒纹理的古籍羊皮纸，骨架信息采用高对比棕褐古典活字。结合系统对比度自适应微调字磅与字距，在烈日下仍保持无懈可击的可读性也保留了典雅史诗感。
+                         </p>
+                      </div>
+                   </div>
+                </div>
+
+                <div className="lg:col-span-6 lg:order-1 sticky top-24">
+                   <ImageRenderer 
+                     title="游戏加载 ＆ 星盘主界面 ＆ 纸质亮色模式" 
+                     src="/游戏加载.主界面.亮色模式.png" 
+                     className="w-full aspect-[16/10] shadow-[0_0_80px_rgba(0,0,0,0.85)] border border-orange-900/30"
+                   />
+                   <p className="text-[10px] font-mono text-orange-400/40 mt-4 text-center">全息加载流与明暗模式双向转译设计 / Click to Zoom</p>
+                </div>
+             </div>
+          </div>
+        </section>
+
+        {/* Part 4: 抉择、秘藏、大君协助、好友排行榜 */}
+        <section className="relative px-6 md:px-10 lg:px-24 py-32 bg-[#0c0906]/50 border-t border-orange-950/15">
+          <div className="max-w-7xl mx-auto space-y-16">
+             <div className="space-y-4">
+                <span className="text-[10px] font-mono tracking-[0.8em] text-orange-500/40 uppercase">PART 04 // DECISION & EQUILIBRIUM</span>
+                <h2 className="text-4xl md:text-5xl font-medium text-amber-100 italic tracking-tight">动作发条、执局秘藏、命运大君与智者之碑</h2>
+             </div>
+
+             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                <div className="lg:col-span-6 space-y-8">
+                   {/* Module 1 */}
+                   <div className="p-6 rounded-[1.5rem] border border-orange-950/30 bg-orange-950/5 space-y-3">
+                      <h4 className="text-sm font-mono text-amber-400 uppercase">1. 动作·发条界面（事件抉择流）</h4>
+                      <p className="text-xs text-orange-200/50 leading-relaxed font-light">
+                         <span className="text-red-400 block font-semibold hover:tracking-wide transition-all uppercase pb-0.5">❌ 设计痛点 (Design Pain Points)</span>
+                         传统的长篇剧情或战令任务文本平铺直叙，缺乏核心的视觉记忆点，导致玩家快速无视（Skip）或产生阅读倦怠，无法与玩法产生深度情感共鸣。面临选择分支时结果模糊。
+                      </p>
+                      <p className="text-xs text-orange-200/80 leading-relaxed font-light mt-2 bg-orange-950/20 p-3 rounded-lg border border-orange-900/20">
+                         <span className="text-emerald-400 block font-bold uppercase pb-0.5">💡 设计思路 (Design Approach)</span>
+                         <strong>多轨双选视差流架构：</strong>界面顶部清晰架构 Helena 洞察 与 Steiner 哲学双徽章，正文用“编年体”包裹 <strong>ACTIVE STORY CHRONO / 命轨微曜</strong>。下方采用预测式 UX（Predictive UX）将后果（如消耗及步数+1）前置呈現。通过触发裂解惩罚警示，卡死玩博弈心理阈值。
+                      </p>
+                   </div>
+
+                   {/* Module 2 */}
+                   <div className="p-6 rounded-[1.5rem] border border-orange-950/30 bg-orange-950/5 space-y-3">
+                      <h4 className="text-sm font-mono text-amber-400 uppercase">2. 道具箱界面（执局神圣秘藏箱）</h4>
+                      <p className="text-xs text-orange-200/50 leading-relaxed font-light">
+                         <span className="text-red-400 block font-semibold uppercase pb-0.5">❌ 设计痛点 (Design Pain Points)</span>
+                         同质化的格子背包难以体现道具的历史物质感。提示卡片跳转频繁，容易打断核心心流连续。
+                      </p>
+                      <p className="text-xs text-orange-200/80 leading-relaxed font-light mt-2 bg-orange-950/20 p-3 rounded-lg border border-orange-900/20">
+                         <span className="text-emerald-400 block font-bold uppercase pb-0.5">💡 设计思路 (Design Approach)</span>
+                         <strong>微拉丝暗金勾边暗盒（Micro Glassmorphic Grid）：</strong>标签采用复古归属，自带细腻光晕起伏。详情无缝合并在背包下方同一界面做渐进式折叠：<strong>【底蕴定义】（秘宝由来） $\rightarrow$ 【因果效能】（交互规则）</strong>，省去跳转，完成极速闭环认知。
+                      </p>
+                   </div>
+
+                   {/* Module 3 */}
+                   <div className="p-6 rounded-[1.5rem] border border-orange-950/30 bg-orange-950/5 space-y-3">
+                      <h4 className="text-sm font-mono text-amber-400 uppercase">3. 命运大君协助界面（双轨神启）</h4>
+                      <p className="text-xs text-orange-200/50 leading-relaxed font-light">
+                         <span className="text-red-400 block font-semibold uppercase pb-0.5">❌ 设计痛点 (Design Pain Points)</span>
+                         文字型的死板 FAQ 或平庸弹框让人出戏，缺乏叙事中的宿命庄严和神俯瞰。
+                      </p>
+                      <p className="text-xs text-orange-200/80 leading-relaxed font-light mt-2 bg-orange-950/20 p-3 rounded-lg border border-orange-900/20">
+                         <span className="text-emerald-400 block font-bold uppercase pb-0.5">💡 设计思路 (Design Approach)</span>
+                         全遮罩的深邃微透视卡片。将 AI 协助包装为 <strong>“因果权衡天平 (Cognitive Equilibrium)”</strong>。左为古典理性大君（安全慢步）；右为现代直觉大君（步幅跨越大，SAN暴跌风险）。让游戏 AI 充满双向博弈的仪式感。
+                      </p>
+                   </div>
+
+                   {/* Module 4 */}
+                   <div className="p-6 rounded-[1.5rem] border border-orange-950/30 bg-orange-950/5 space-y-3">
+                      <h4 className="text-sm font-mono text-amber-400 uppercase">4. 执局者好友榜（智性排行）</h4>
+                      <p className="text-xs text-orange-200/50 leading-relaxed font-light">
+                         <span className="text-red-400 block font-semibold uppercase pb-0.5">❌ 设计痛点 (Design Pain Points)</span>
+                         普通数字好友榜容易引发中下层气馁，平白丧失仪式美感。
+                      </p>
+                      <p className="text-xs text-orange-200/80 leading-relaxed font-light mt-2 bg-orange-950/20 p-3 rounded-lg border border-orange-900/20">
+                         <span className="text-emerald-400 block font-bold uppercase pb-0.5">💡 设计思路 (Design Approach)</span>
+                         <strong>阶梯学术徽章信息格式：</strong>黑金质感卡片包裹。每人均有流派图腾（如已通关理性星盘/已解锁感性契约）。摒弃单纯数字竞速，异化为“思想和学术探索阶段”的比拼，高易读度中唤醒长线社交驱动。
+                      </p>
+                   </div>
+                </div>
+
+                <div className="lg:col-span-6 sticky top-24">
+                   <ImageRenderer 
+                     title="发条抉择、神圣秘宝、天平神启与执局好友榜" 
+                     src="/动作发条·道具箱·命运大君协助·好友排行榜.png" 
+                     className="w-full aspect-[16/10] shadow-[0_0_80px_rgba(0,0,0,0.9)] border border-orange-900/30"
+                   />
+                   <p className="text-[10px] font-mono text-orange-400/40 mt-4 text-center">核心战斗动作、资产背囊与 AI 决策神启流交互细节 / Click to Zoom</p>
+                </div>
+             </div>
+          </div>
+        </section>
+
+        {/* Part 5: 助手、配置与商业特权月卡 */}
+        <section className="relative px-6 md:px-10 lg:px-24 py-32 border-t border-orange-950/15 bg-gradient-to-b from-[#070503] to-[#040302]">
+          <div className="max-w-7xl mx-auto space-y-20">
+             <div className="space-y-4">
+                <span className="text-[10px] font-mono tracking-[0.8em] text-orange-500/40 uppercase">PART 05 // COMPANION, CONFIG & MONETIZATION</span>
+                <h2 className="text-4xl md:text-5xl font-medium text-amber-100 italic tracking-tight">小秘助手、配置拦截、珍稀阁与月卡每日契约</h2>
+             </div>
+
+             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+                {/* Panel A - AI, Config & Skins */}
+                <div className="p-8 rounded-[2.5rem] border border-orange-950/30 bg-[#0d0906]/80 flex flex-col justify-between space-y-8">
+                   <div className="space-y-6">
+                      <span className="text-xs font-mono text-amber-400 uppercase tracking-wider block">1. 智能助手、个性配置及珍衣饰 Cabins</span>
+                      <div className="space-y-4">
+                         <div className="text-xs text-orange-200/60 leading-relaxed font-light">
+                            <strong>智能守护小秘号 AI 协同：</strong>
+                            针对常见 FAQ 系统割裂心流，小秘助手实时上下文探测沙盘节点。采用Conversational UX。提供拇指热区高频预设卡片标签，实现零阻力极速疑问解答。
+                         </div>
+                         <div className="text-xs text-orange-200/60 leading-relaxed font-light border-y border-orange-950/20 py-4">
+                            <strong>物理侧断连仿真模拟 (Edge Cases)：</strong>
+                            网络发生异常不产生突兀代码。通过 ⚠️ 警示条显示“ONLINE 同步中”动态波纹。将离线重构为向神祈灵“Seek Lord Council”，用叙事手段抚平用户的等待焦虑。
+                         </div>
+                         <div className="text-xs text-orange-200/60 leading-relaxed font-light">
+                            <strong>高级个性设置与衣饰珍稀阁：</strong>
+                            设置大类模组卡片。传奇皮肤 [蔷薇以太 · Helena] 与史诗 [深渊学者 ] 将战令数值博弈与视觉观赏完美熔炼，强化炫耀及收藏成就感。
+                         </div>
+                      </div>
+                   </div>
+                   <ImageRenderer 
+                     title="小秘助手 与 个性化设置 与 珍稀礼服" 
+                     src="/小秘助手·游戏配置·个性化设置·珍稀皮肤.png" 
+                     className="w-full aspect-[16/10] border border-orange-900/20"
+                   />
+                </div>
+
+                {/* Panel B - Monetization & Season */}
+                <div className="p-8 rounded-[2.5rem] border border-orange-950/30 bg-[#0d0906]/80 flex flex-col justify-between space-y-8">
+                   <div className="space-y-6">
+                      <span className="text-xs font-mono text-purple-400 uppercase tracking-wider block font-medium">2. 尊贵原石周卡月卡、每日打卡合约与赛季时空大盘</span>
+                      <div className="space-y-4">
+                         <div className="text-xs text-orange-200/60 leading-relaxed font-light">
+                            <strong>尊贵原石月卡界面 (Monetization)：</strong>
+                            付费结构化设计。顶部明确赛季底价， PREMIUM PASS 高高置顶、醒目呼唤。提炼三大限购及专属资产特权，直观拉近价值感。
+                         </div>
+                         <div className="text-xs text-orange-200/60 leading-relaxed font-light border-y border-orange-950/20 py-4">
+                            <strong>每日契约签到 (Active Contract)：</strong>
+                            打破机械感，升级为 DAILY SIGNATURE CONTRACT 契约。已领区域亮绿盖章冻结；未领维持灰度，双语行为高亮触发极佳终极交互完结感。
+                         </div>
+                         <div className="text-xs text-orange-200/60 leading-relaxed font-light">
+                            <strong>总线契约季大盘因果 (General Season)：</strong>
+                            宏观状态容器解构，包含 [第一赛季已锁死100%]、[第二赛季原子充能中57%]、[第三赛季虚无提示]。通过明确的引导流随时退避或一键按压折返沙盘主页。
+                         </div>
+                      </div>
+                   </div>
+                   <ImageRenderer 
+                     title="原石月卡 ＆ 每日合约 ＆ 总赛季大盘机制" 
+                     src="/砖石周卡·每日打卡签到·总赛季说明.png" 
+                     className="w-full aspect-[16/10] border border-orange-900/20"
+                   />
+                </div>
+             </div>
+          </div>
+        </section>
+
+        {/* Part 6: 手机端全交互界面走廊 */}
+        <section className="relative px-6 md:px-10 lg:px-24 py-32 border-t border-orange-950/20 bg-black">
+          <div className="max-w-7xl mx-auto space-y-16">
+             <div className="space-y-6 text-center max-w-3xl mx-auto">
+                <span className="text-[10px] font-mono tracking-[0.8em] text-orange-500/50 uppercase block">PHONE VIEW ALL-MEMBER PASS GALLERY</span>
+                <h2 className="text-3xl md:text-5xl font-medium text-amber-100 tracking-tight">手机端全交互界面走廊</h2>
+                <p className="text-sm text-orange-300/40 leading-relaxed font-light">
+                  由维多利亚暗黑占星盘设计系统（Aether Dark Spec）严格约束的14幅全端手机规格图层走廊，点击任何插画均可进行高精视窗细节缩放探索。
+                </p>
+             </div>
+
+             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 pt-8">
+                {[
+                  { name: "游戏登录界面", file: "/游戏登录界面手机端.png", desc: "执局者印记登入契约起点" },
+                  { name: "游戏注册界面", file: "/游戏注册界面手机端.png", desc: "半开抽屉轻盈多阶段账号塑造" },
+                  { name: "用户协议界面", file: "/游戏用户协议界面手机端.png", desc: "理智契约法理保障机制阅读" },
+                  { name: "角色选择界面", file: "/角色选择界面手机端.png", desc: "海伦娜与施泰纳宿命双向锁链" },
+                  { name: "游戏加载界面", file: "/游戏加载界面手机端.png", desc: "以太纪元熔融无缝全息加载拦截" },
+                  { name: "游戏核心主界面一", file: "/游戏主界面手机端.png", desc: "星野网格轨迹占星策略图层" },
+                  { name: "游戏核心主界面二", file: "/游戏主界面手机端2.png", desc: "微物理拖拽防错防漏探索触感" },
+                  { name: "亮色学者模式", file: "/亮色模式手机端.png", desc: "自适应古羊皮纸与活字印刷风契约" },
+                  { name: "事件抉择动作", file: "/动作·发条界面手机端.png", desc: "多轨双向预测抉择双曜故事微徽章" },
+                  { name: "圣物道具秘藏", file: "/道具箱界面手机端.png", desc: "金边槽位珍藏卡片详情合拢器" },
+                  { name: "大君神启协助", file: "/游戏命运大君协助界面.png", desc: "因果天平折回退让仪式覆盖浮板" },
+                  { name: "执局高手金榜", file: "/游戏好友排行榜手机端.png", desc: "阶梯图腾流派探索进程智性排行榜" },
+                  { name: "智能守护协同", file: "/游戏小秘助手.png", desc: "AI多维语境感知对话快速推荐气泡" },
+                  { name: "系统偏好设置", file: "/游戏配置界面手机端.png", desc: "音段重合度滑动与极度断网安全拦截" }
+                ].map((item, idx) => (
+                  <div key={idx} className="group relative flex flex-col justify-between p-4 rounded-3xl bg-orange-950/[0.03] border border-orange-950/20 hover:border-amber-500/20 hover:bg-orange-950/[0.05] transition-all duration-500">
+                     <ImageRenderer 
+                        title={item.name} 
+                        src={item.file} 
+                        className="w-full aspect-[9/16] shadow-xl rounded-2xl overflow-hidden bg-[#070503]" 
+                     />
+                     <div className="mt-4 space-y-1">
+                        <p className="text-xs font-medium text-amber-100 font-mono tracking-tight">{item.name}</p>
+                        <p className="text-[10px] text-orange-300/40 leading-none">{item.desc}</p>
+                     </div>
+                  </div>
+                ))}
+             </div>
+          </div>
+        </section>
+
+        {/* FINAL EXIT */}
+        <section className="relative h-[80vh] flex flex-col items-center justify-center border-t border-orange-950/20 overflow-hidden">
+          <div className="absolute inset-0 bg-amber-500/5 pointer-events-none" />
+          <motion.div
+             initial={{ opacity: 0, scale: 0.9 }}
+             whileInView={{ opacity: 1, scale: 1 }}
+             viewport={{ once: true }}
+             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+             className="relative z-10 flex flex-col items-center gap-16 group cursor-pointer"
+             onClick={() => navigate('/')}
+          >
+            <div className="text-[10px] font-mono tracking-[2em] text-orange-400/50 uppercase ml-12">Transmission Terminal</div>
+            <h2 className="text-4xl md:text-8xl font-medium tracking-tighter text-orange-400/30 group-hover:text-white transition-all duration-1000 text-center px-10">
+              Exit Case Study
+            </h2>
+            <div className="w-20 h-20 rounded-full border border-white/10 flex items-center justify-center glass group-hover:border-orange-400/40 group-hover:scale-110 transition-all duration-700">
+               <ArrowLeft className="w-6 h-6 rotate-180" />
+            </div>
+          </motion.div>
+        </section>
+
+        {/* FOOTER */}
+        <footer className="px-10 py-32 border-t border-white/5 bg-black flex flex-col items-center gap-10">
+           <div className="flex items-center gap-6">
+              <div className="h-[1px] w-12 bg-white/10" />
+              <div className="text-[10px] font-mono tracking-[1.5em] text-white/20 uppercase">FATE MYSTERY UX PROJECT</div>
+              <div className="h-[1px] w-12 bg-white/10" />
+           </div>
+           <div className="text-[10px] font-mono text-white/5 uppercase text-center max-w-lg leading-relaxed tracking-[0.2em]">
+              This project is part of the Fate Mystery Casual Strategy UX Initiative. All strategic frameworks and layout specifications are proprietary. / 2026
+          </div>
+        </footer>
+      </div>
+    );
+  }
+
+  if (project.id === 'injoy') {
+    // Top-level states for live interactive prototypes
+    const [doorLocked, setDoorLocked] = React.useState(true);
+    const [leftFrontPressure, setLeftFrontPressure] = React.useState(2.4);
+    const [rightFrontPressure, setRightFrontPressure] = React.useState(2.1); // Abnormal warning bar
+    const [alarmActive, setAlarmActive] = React.useState(false);
+    const [acPreset, setAcPreset] = React.useState('heat'); // 'heat' | 'cool' | 'plasma'
+    const [parkingMode, setParkingMode] = React.useState('inout'); // 'inout' | 'remote'
+    const [hudSynced, setHudSynced] = React.useState(false);
+    const [simulatedTime, setSimulatedTime] = React.useState('09:52');
+    
+    // Community Feed States
+    const [likes, setLikes] = React.useState({ post1: 124, post2: 256 });
+    const [liked, setLiked] = React.useState({ post1: false, post2: false });
+    
+    // Store Dialog States
+    const [orderedProduct, setOrderedProduct] = React.useState(null);
+
+    const toggleLike = (postKey) => {
+      setLiked(prev => {
+        const nextLiked = !prev[postKey];
+        setLikes(oldLikes => ({
+          ...oldLikes,
+          [postKey]: nextLiked ? oldLikes[postKey] + 1 : oldLikes[postKey] - 1
+        }));
+        return { ...prev, [postKey]: nextLiked };
+      });
+    };
+
+    return (
+      <div ref={containerRef} className="relative min-h-screen bg-[#070913] text-[#e2e8f0] selection:bg-cyan-500/30 font-sans overflow-x-hidden">
+        {/* Background Effects */}
+        <div className="fixed inset-0 z-0 pointer-events-none">
+          <div className="absolute top-[-15%] right-[-10%] w-[60%] h-[70%] bg-cyan-500/10 blur-[180px] rounded-full" />
+          <div className="absolute bottom-[-15%] left-[-10%] w-[50%] h-[70%] bg-blue-600/10 blur-[180px] rounded-full animate-pulse" />
+          <div className="absolute top-[40%] left-[30%] w-[40%] h-[40%] bg-purple-600/[0.04] blur-[150px] rounded-full" />
+          <div className="absolute inset-0 bg-[#000000]/70 mix-blend-color" />
+          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.05] contrast-150 brightness-50 mix-blend-overlay" />
+        </div>
+
+        {/* Progress Bar */}
+        <motion.div 
+          className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-cyan-400 via-blue-500 to-teal-400 origin-left z-[1001]"
+          style={{ scaleX: smoothProgress }}
+        />
+
+        {/* Navigation bar with crystal glass design */}
+        <nav className="fixed top-0 left-0 right-0 z-[1000] px-6 md:px-16 py-6 flex justify-between items-center bg-[#070913]/60 backdrop-blur-xl border-b border-white/5">
+          <motion.button
+            initial={{ opacity: 0, x: -15 }}
+            animate={{ opacity: 1, x: 0 }}
+            onClick={() => navigate('/')}
+            className="flex items-center gap-3 group text-sm text-slate-300 hover:text-white transition-colors"
+          >
+            <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center glass group-hover:border-white/30 transition-all duration-500">
+               <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+            </div>
+            <span className="text-[10px] font-mono tracking-[0.5em] uppercase opacity-70 group-hover:opacity-100 transition-opacity">Portfolio</span>
+          </motion.button>
+          
+          <div className="text-[10px] font-mono tracking-[0.3em] text-white/40 uppercase hidden md:block">
+            Project Index / <span className="text-cyan-400 font-semibold">境行 · INJOY 精确生态</span>
+          </div>
+        </nav>
+
+        {/* Hero Section */}
+        <section className="relative min-h-[90vh] flex items-center px-6 md:px-16 lg:px-24 pt-36 pb-20 overflow-hidden">
+          <div className="max-w-7xl mx-auto w-full space-y-16">
+             <motion.div
+               initial={{ opacity: 0, y: 50 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+               className="space-y-8"
+             >
+                <div className="space-y-4">
+                   <div className="flex items-center gap-3 text-cyan-400">
+                     <span className="text-xs font-mono tracking-[0.5em] uppercase">Human-Centric EV Cockpit Midcore UX</span>
+                     <div className="h-[1px] w-16 bg-gradient-to-r from-cyan-400 to-transparent" />
+                   </div>
+                   <h1 className="text-4xl md:text-7xl lg:text-8xl font-medium tracking-tighter leading-none text-white font-sans">
+                     境行 · INJOY
+                   </h1>
+                   <p className="text-lg md:text-xl text-slate-400 font-light max-w-4xl leading-relaxed">
+                     现代极简互联车控体验。集成了车载 16:9 智能大屏 HMI 与手机端生态车控 App。本方案聚焦“零焦虑补能”、“自适应状态透明化”和“座舱微环境一键微调”，彻底打破车机与手持端的零散断层，让控车化繁为简、温和且具有前瞻性。
+                   </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                   <div className="p-8 rounded-[2rem] border border-white/5 bg-white/[0.01] hover:border-cyan-500/10 transition-colors space-y-3">
+                      <h4 className="text-sm font-medium text-slate-300">信息读取负载</h4>
+                      <div className="text-3xl font-mono text-cyan-400 font-bold">-50%</div>
+                      <p className="text-xs text-slate-500 leading-relaxed font-light">重构信息亲密性组织框架，对高安全敏感指标（如胎压）进行瞬时视觉提炼，隔绝冗余杂讯。</p>
+                   </div>
+                   <div className="p-8 rounded-[2rem] border border-white/5 bg-white/[0.01] hover:border-cyan-500/10 transition-colors space-y-3">
+                      <h4 className="text-sm font-medium text-slate-300">补能决策链路</h4>
+                      <div className="text-3xl font-mono text-cyan-400 font-bold">-80%</div>
+                      <p className="text-xs text-slate-500 leading-relaxed font-light">将宏观路线向微观车位导航精细对齐，一秒同步超重液冷、空闲休息位等极具质量的补能数据。</p>
+                   </div>
+                   <div className="p-8 rounded-[2rem] border border-white/5 bg-white/[0.01] hover:border-cyan-500/10 transition-colors space-y-3">
+                      <h4 className="text-sm font-medium text-slate-300">异常主动拦截</h4>
+                      <div className="text-3xl font-mono text-emerald-400 font-bold">2.4s</div>
+                      <p className="text-xs text-slate-500 leading-relaxed font-light">毫米级感知并下发轻量悬挂卡片，算法白盒化呈现卫星差分自愈机制，消除黑盒化系统信任摩擦。</p>
+                   </div>
+                </div>
+             </motion.div>
+          </div>
+        </section>
+
+        {/* BLOCK 1: 项目介绍 / 手机端车控生态中枢 */}
+        <section className="relative px-6 md:px-16 lg:px-24 py-24 border-t border-white/5 bg-white/[0.002]">
+          <div className="max-w-7xl mx-auto">
+             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                
+                {/* Visual Description Left */}
+                <div className="lg:col-span-6 space-y-8">
+                   <div className="space-y-4">
+                      <div className="flex items-center gap-2 text-cyan-400">
+                        <span className="text-xs font-mono tracking-widest text-[#00E5FF]">PART 01 // GENERAL CORE</span>
+                      </div>
+                      <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-white">
+                        境行 · INJOY 手机端车控生态中枢
+                      </h2>
+                      <div className="h-[2px] w-12 bg-cyan-400" />
+                   </div>
+
+                   {/* DESIGN PAIN POINTS */}
+                   <div className="p-6 rounded-2xl bg-red-950/10 border border-red-500/10 space-y-3">
+                      <div className="flex items-center gap-2 text-red-400 text-sm font-medium">
+                         <span className="text-xs">❌</span> 设计痛点 (Design Pain Points)
+                      </div>
+                      <p className="text-xs text-slate-400 leading-relaxed font-light">
+                        <strong>状态信息杂乱，缺乏前瞻性视觉锚点</strong>：传统新能源车控 App 的主界面往往将续航、胎压、车况等数据扁平化堆砌，缺乏合理的亲密性（Proximity）组织框架。当车辆出现潜在安全隐患（如单轮低胎压）时，异常指标极易被淹没在海量正常文本中，造成安全风险感知的严重滞后。
+                      </p>
+                      <p className="text-xs text-slate-400 leading-relaxed font-light">
+                        <strong>常用快捷按键（CTA）无差别排布，点击效率低下</strong>：车锁、车窗、临时寻车等控制按钮在不同场景下的使用频次和紧急度完全不同。将它们进行无差别等宽排布或隐藏在深层链路中，会导致用户在户外、停车场等急迫场景下的操作摩擦力（Friction）骤增。
+                      </p>
+                   </div>
+
+                   {/* DESIGN APPROACH */}
+                   <div className="p-6 rounded-2xl bg-emerald-950/10 border border-emerald-500/10 space-y-3">
+                      <div className="flex items-center gap-2 text-[#00E676] text-sm font-medium">
+                         <span className="text-xs">💡</span> 设计思路 (Design Approach)
+                      </div>
+                      <p className="text-xs text-slate-400 leading-relaxed font-light">
+                        <strong>数字孪生可视化与空间亲密性架构</strong>：采用上半区域作为核心状态看板。顶部高亮外显核心续航里程（399 km）并搭配 <span className="text-[#00E5FF] font-semibold">车门已锁</span> 的安全状态闭环。中间部署 3D 数字孪生车模，并紧密耦合下方 四轮胎压自检 卡片，通过高辨识度的色彩管理（将右前异常胎压 2.4 bar 以高对比度暖橙色标出），实现高安全敏感度指标的即时视觉跳跃。
+                      </p>
+                      <p className="text-xs text-slate-400 leading-relaxed font-light">
+                        <strong>场景化自适应热区编排（Thumb Zone Optimization）</strong>：中部常驻高频全局搜索框（搜索充电网点、心愿目的地），缩短补能决策路径。下半部分严格遵循移动端拇指触控热区，将车锁、车窗、后备箱、临停寻车四大高频刚需功能解构为极简、大尺寸的独立微光卡片，并以强弱色彩对比凸显当前状态，大幅提升盲操成功率与核心控制链路的响应效率。
+                      </p>
+                   </div>
+                </div>
+
+                {/* Interactive Phone Mockup Right */}
+                <div className="lg:col-span-6 space-y-6">
+                   <div className="relative mx-auto max-w-[340px] rounded-[3rem] border-[6px] border-slate-700 bg-black shadow-[0_0_80px_rgba(6,182,212,0.15)] overflow-hidden">
+                      {/* Speaker Notch */}
+                      <div className="absolute top-0 inset-x-0 h-5 bg-black z-30 flex items-center justify-center">
+                         <div className="w-16 h-4 bg-slate-900 rounded-b-xl" />
+                      </div>
+                      
+                      {/* App Frame Inner */}
+                      <div className="p-4 pt-8 bg-[#070b13] text-white min-h-[580px] flex flex-col justify-between select-none">
+                         {/* Header Status */}
+                         <div className="flex justify-between items-center px-2 text-[10px] font-mono text-white/50">
+                            <span>INJOY OS</span>
+                            <span>{simulatedTime}</span>
+                         </div>
+                         
+                         {/* Top Cruising Gauge */}
+                         <div className="mt-4 p-4 rounded-2xl bg-white/[0.01] border border-white/5 text-center relative overflow-hidden">
+                            <div className="absolute top-0 right-0 px-2 py-0.5 bg-emerald-500/10 text-emerald-400 text-[8px] font-mono rounded-bl-lg">ONLINE</div>
+                            <span className="text-[10px] uppercase font-mono text-slate-400 tracking-wider">WLTP Cruising Range</span>
+                            <div className="flex items-baseline justify-center gap-1 mt-1">
+                               <span className="text-4xl font-mono font-bold text-[#00E5FF]">399</span>
+                               <span className="text-xs text-slate-400">km</span>
+                            </div>
+                            <div className="mt-2 text-xs text-slate-300 flex items-center justify-center gap-2">
+                               <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                               {doorLocked ? "车门已锁 · 守护闭环" : "车门已解锁 · 请留意安全"}
+                            </div>
+                         </div>
+
+                         {/* Wireframe digital car simulation */}
+                         <div className="my-6 relative flex flex-col items-center justify-center py-4">
+                            <div className="absolute inset-0 bg-cyan-400/5 blur-xl rounded-full" />
+                            <Car className={`w-32 h-20 text-cyan-400/80 transition-all duration-700 ${alarmActive ? 'animate-pulse scale-105 text-amber-400' : ''}`} />
+                            <div className="absolute bottom-1 bg-black/40 px-3 py-1 rounded-full border border-white/5 text-[9px] font-mono text-slate-400">
+                               Digital Twin State v2.0
+                            </div>
+                         </div>
+
+                         {/* Tire Pressure Container */}
+                         <div className="p-3 rounded-2xl bg-white/[0.02] border border-white/5 space-y-2">
+                            <div className="flex justify-between items-center text-[9px] font-mono text-slate-400 px-1">
+                               <span>四轮胎压智能检测</span>
+                               <span className="text-amber-400 font-semibold">{rightFrontPressure === 2.1 ? "右前警报异常" : "自检状态优"}</span>
+                            </div>
+                            <div className="grid grid-cols-2 gap-2 text-xs font-mono">
+                               <div className="p-2 bg-black/30 border border-white/5 rounded-lg flex justify-between">
+                                  <span className="text-slate-500">左前:</span> <span>{leftFrontPressure} bar</span>
+                               </div>
+                               <div className={`p-2 bg-black/30 border rounded-lg flex justify-between transition-colors ${rightFrontPressure === 2.1 ? 'border-amber-500/30 bg-amber-500/5 text-amber-400' : 'border-white/5 text-slate-300'}`}>
+                                  <span className="text-slate-500">右前:</span> <span>{rightFrontPressure} bar</span>
+                               </div>
+                               <div className="p-2 bg-black/30 border border-white/5 rounded-lg flex justify-between">
+                                  <span className="text-slate-500">左后:</span> <span>2.5 bar</span>
+                               </div>
+                               <div className="p-2 bg-black/30 border border-white/5 rounded-lg flex justify-between">
+                                  <span className="text-slate-500">右后:</span> <span>2.5 bar</span>
+                               </div>
+                            </div>
+                         </div>
+
+                         {/* Quick CTA - Thumb layout */}
+                         <div className="mt-3 grid grid-cols-2 gap-2.5">
+                            <button 
+                              onClick={() => setDoorLocked(!doorLocked)}
+                              className={`py-3 rounded-xl border font-medium text-xs flex flex-col items-center justify-center gap-1 transition-all duration-300 ${doorLocked ? 'bg-cyan-500 border-cyan-400 text-black' : 'bg-white/5 border-white/10 text-white hover:bg-white/10'}`}
+                            >
+                               <span className="text-sm">🔑</span>
+                               <span>{doorLocked ? "解锁车辆" : "锁紧车辆"}</span>
+                            </button>
+                            
+                            <button 
+                              onClick={() => {
+                                setAlarmActive(true);
+                                setTimeout(() => setAlarmActive(false), 2000);
+                              }}
+                              className={`py-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors text-xs flex flex-col items-center justify-center gap-1 ${alarmActive ? 'border-red-500 text-red-400 bg-red-500/10 animate-shake' : ''}`}
+                            >
+                               <span className="text-sm">🔊</span>
+                               <span>寻车鸣笛/闪灯</span>
+                            </button>
+                         </div>
+                      </div>
+                   </div>
+                   
+                   <ImageRenderer 
+                      title="第一部分项目介绍：车控生态中枢 境行主界面" 
+                      src="/境行主界面.png" 
+                      className="w-full aspect-[16/10] shadow-2xl mt-4" 
+                   />
+                </div>
+
+             </div>
+          </div>
+        </section>
+
+        {/* BLOCK 2: 手机端精细化车控矩阵 */}
+        <section className="relative px-6 md:px-16 lg:px-24 py-24 bg-white/[0.005]">
+          <div className="max-w-7xl mx-auto">
+             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                
+                {/* Visual Interactivity Left */}
+                <div className="lg:col-span-6 space-y-6">
+                   <div className="p-8 rounded-[3rem] border border-white/5 bg-[#0a0f1d] shadow-[0_0_60px_rgba(6,182,212,0.1)] space-y-6">
+                      <div className="flex justify-between items-center border-b border-white/5 pb-4">
+                         <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest">VEHICLE CONTROL MATRIX DECK</span>
+                         <span className="text-[10px] font-mono text-slate-500">Live Configurator</span>
+                      </div>
+
+                      {/* Control grid */}
+                      <div className="space-y-4">
+                         <span className="text-xs font-mono text-slate-400 block">车辆控制 · VEHICLE CONTROL PANEL</span>
+                         <div className="grid grid-cols-4 gap-2 text-center text-[10px] font-mono">
+                            <button className="p-3 bg-white/[0.02] border border-white/5 rounded-xl hover:border-cyan-400/30 text-xs transition-all flex flex-col items-center gap-1">
+                               <span>🔌</span>
+                               <span className="text-slate-400">充电口</span>
+                            </button>
+                            <button className="p-3 bg-white/[0.02] border border-white/5 rounded-xl hover:border-cyan-400/30 text-xs transition-all flex flex-col items-center gap-1">
+                               <span>⚡</span>
+                               <span className="text-slate-400">12V供能</span>
+                            </button>
+                            <button className="p-3 bg-white/[0.02] border border-white/5 rounded-xl hover:border-cyan-400/30 text-xs transition-all flex flex-col items-center gap-1">
+                               <span>📯</span>
+                               <span className="text-slate-400">鸣笛闪灯</span>
+                            </button>
+                            <button 
+                              onClick={() => setRightFrontPressure(prev => prev === 2.1 ? 2.4 : 2.1)}
+                              className={`p-3 border rounded-xl text-xs transition-all flex flex-col items-center gap-1 ${rightFrontPressure === 2.1 ? 'bg-amber-500/10 border-amber-500/30' : 'bg-white/[0.02] border-white/5'}`}
+                            >
+                               <span>🎈</span>
+                               <span className={rightFrontPressure === 2.1 ? 'text-amber-400 font-semibold' : 'text-slate-400'}>
+                                 {rightFrontPressure === 2.1 ? "重置胎压" : "微调胎压"}
+                               </span>
+                            </button>
+                         </div>
+                      </div>
+
+                      {/* Climate quick action presets */}
+                      <div className="space-y-3">
+                         <div className="flex justify-between items-center">
+                            <span className="text-xs font-mono text-slate-400">一键式高感官座舱场景预设</span>
+                            <span className="text-xs font-bold text-cyan-400 font-mono">27.0°C 外显</span>
+                         </div>
+                         <div className="text-[10px] text-slate-400 font-mono italic">提示: 自动风量平衡 · 无微风感人感已激活</div>
+                         <div className="grid grid-cols-3 gap-2 text-center text-xs font-mono">
+                            <button 
+                              onClick={() => setAcPreset('heat')}
+                              className={`p-3 border rounded-xl flex items-center justify-center gap-1 transition-all ${acPreset === 'heat' ? 'bg-[#00E5FF]/10 border-[#00E5FF] text-[#00E5FF] font-semibold' : 'bg-white/[0.01] border-white/5 text-slate-400 hover:bg-white/5'}`}
+                            >
+                               <span className="w-2 h-2 rounded-full bg-[#00E5FF] animate-ping" />
+                               极速升温
+                            </button>
+                            <button 
+                              onClick={() => setAcPreset('cool')}
+                              className={`p-3 border rounded-xl flex items-center justify-center gap-1 transition-all ${acPreset === 'cool' ? 'bg-[#00E5FF]/10 border-[#00E5FF] text-[#00E5FF] font-semibold' : 'bg-white/[0.01] border-white/5 text-slate-400 hover:bg-white/5'}`}
+                            >
+                               极速降温
+                            </button>
+                            <button 
+                              onClick={() => setAcPreset('plasma')}
+                              className={`p-3 border rounded-xl flex items-center justify-center gap-1 transition-all ${acPreset === 'plasma' ? 'bg-[#00E5FF]/10 border-[#00E5FF] text-[#00E5FF] font-semibold' : 'bg-white/[0.01] border-white/5 text-slate-400 hover:bg-white/5'}`}
+                            >
+                               等离子除味
+                            </button>
+                         </div>
+                      </div>
+
+                      {/* Remote Auto Parking */}
+                      <div className="p-4 rounded-xl bg-cyan-950/10 border border-cyan-500/10 space-y-2">
+                         <div className="flex justify-between items-center text-xs">
+                            <span className="font-mono text-slate-300">智能泊车 · SMART PARKING</span>
+                            <span className="text-[10px] font-mono text-emerald-400">已唤醒</span>
+                         </div>
+                         <div className="grid grid-cols-2 gap-2 text-[10px] font-mono">
+                            <button 
+                               onClick={() => setParkingMode('inout')}
+                               className={`p-2.5 rounded-lg border transition-colors ${parkingMode === 'inout' ? 'bg-cyan-500/20 border-cyan-400 text-white' : 'bg-black/40 border-white/5 text-slate-400'}`}
+                            >
+                               进出车位
+                            </button>
+                            <button 
+                               onClick={() => setParkingMode('remote')}
+                               className={`p-2.5 rounded-lg border transition-colors ${parkingMode === 'remote' ? 'bg-cyan-500/20 border-cyan-400 text-white' : 'bg-black/40 border-white/5 text-slate-400'}`}
+                            >
+                               遥控泊车
+                            </button>
+                         </div>
+                         <p className="text-[9px] font-mono text-cyan-400/80 leading-relaxed pt-1">
+                            🤖 *境行自适应车算法已唤醒，正在加载激光雷达传感器图层进行安全护航
+                         </p>
+                      </div>
+                   </div>
+                   
+                   <ImageRenderer 
+                      title="第二部分精细化车控展示：1.png" 
+                      src="/1.png" 
+                      className="w-full aspect-[16/10] shadow-2xl mt-4" 
+                   />
+                </div>
+
+                {/* Visual Description Right */}
+                <div className="lg:col-span-6 space-y-8">
+                   <div className="space-y-4">
+                      <div className="flex items-center gap-2 text-cyan-400">
+                        <span className="text-xs font-mono tracking-widest text-[#00E5FF]">PART 02 // DETAILED ECO-MATRIX</span>
+                      </div>
+                      <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-white">
+                        境行 · INJOY 手机端精细化车控矩阵
+                      </h2>
+                      <div className="h-[2px] w-12 bg-cyan-400" />
+                   </div>
+
+                   {/* DESIGN PAIN POINTS */}
+                   <div className="p-6 rounded-2xl bg-red-950/10 border border-red-500/10 space-y-3">
+                      <div className="flex items-center gap-2 text-red-400 text-sm font-medium">
+                         <span className="text-xs">❌</span> 设计痛点 (Design Pain Points)
+                      </div>
+                      <p className="text-xs text-slate-400 leading-relaxed font-light">
+                        <strong>高频次级控制链的归纳失序</strong>：智能汽车拥有庞大的电子控制节点（如充电口、12V电源、智能空调、泊车等）。传统 App 在用户下滑屏幕时，容易出现信息流逻辑断层或图标样式各异的问题，导致用户在寻找特定硬件开关（如“鸣笛闪灯”）时视觉检索效率低下。
+                      </p>
+                      <p className="text-xs text-slate-400 leading-relaxed font-light">
+                        <strong>复杂环境调节功能的操作繁琐性</strong>：传统的空调或智能泊车模块往往需要进入多级子页面进行参数调校。在炎热夏季或拥挤车位前，这种漫长的交互路径会导致用户在车外远程控车时产生极强的操作焦虑与时间损耗。
+                      </p>
+                   </div>
+
+                   {/* DESIGN APPROACH */}
+                   <div className="p-6 rounded-2xl bg-emerald-950/10 border border-emerald-500/10 space-y-3">
+                      <div className="flex items-center gap-2 text-[#00E676] text-sm font-medium">
+                         <span className="text-xs">💡</span> 设计思路 (Design Approach)
+                      </div>
+                      <p className="text-xs text-slate-400 leading-relaxed font-light">
+                        <strong>二级高精控制符号化网格（Information Hierarchy）</strong>：下滑界面通过清晰的模块化卡片（Card Container）重构了底盘控制链。*车辆控制 · VEHICLE CONTROL* 区域采用极极简的线性徽章图标（充电口、12V电源、鸣笛、闪灯、胎压）横向一字排开，并提供快捷详情分析入口，以极高的可读性（Scannability）精简了次级高频操作的触达路径。
+                      </p>
+                      <p className="text-xs text-slate-400 leading-relaxed font-light">
+                        <strong>一键式高感官座舱场景预设（Scenario-Based UX）</strong>：
+                        <br />
+                        • <strong>智能空调模块</strong>：打破常规的增减度数操作限制，通过加粗文本 <span className="font-semibold text-cyan-400">27.0°C</span> 外显状态，并提供动态文案提示（自动风量平衡 · 无微风感人感）。下方直接平铺三大刚需场景快捷键：正在运行的 <span className="text-[#00E5FF] font-semibold">极速升温</span>（以高辨识度青蓝色包裹并带有状态呼吸点）、极速降温 与 等离子除味，实现零步长（Zero-Step）的座舱环境一键速达。
+                        <br />
+                        • <strong>智能泊车模块</strong>：界面底部平滑承接 *智能泊车 · SMART PARKING* 中枢，分段卡片提供 *进出车位* 与 *遥控泊车* 顶层决策切换。利用“境行自适应车算法已唤醒”的文字锚点，在底层数据加载时给用户确定性的安全心理暗示，打造极致平滑的智能硬件远程驾驭体验。
+                      </p>
+                   </div>
+                </div>
+
+             </div>
+          </div>
+        </section>
+
+        {/* BLOCK 3: 智能出行补能与发现中枢 */}
+        <section className="relative px-6 md:px-16 lg:px-24 py-24">
+          <div className="max-w-7xl mx-auto">
+             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                
+                {/* Visual Description Left */}
+                <div className="lg:col-span-6 space-y-8">
+                   <div className="space-y-4">
+                      <div className="flex items-center gap-2 text-cyan-400">
+                        <span className="text-xs font-mono tracking-widest text-[#00E5FF]">PART 03 // POWER CHARGE SYSTEMS</span>
+                      </div>
+                      <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-white">
+                        境行 · INJOY 智能出行补能与发现中枢
+                      </h2>
+                      <div className="h-[2px] w-12 bg-cyan-400" />
+                   </div>
+
+                   {/* DESIGN PAIN POINTS */}
+                   <div className="p-6 rounded-2xl bg-red-950/10 border border-red-500/10 space-y-3">
+                      <div className="flex items-center gap-2 text-red-400 text-sm font-medium">
+                         <span className="text-xs">❌</span> 设计痛点 (Design Pain Points)
+                      </div>
+                      <p className="text-xs text-slate-400 leading-relaxed font-light">
+                        <strong>车位微观定位模糊导致的“补能焦虑”</strong>：传统导航 App 或车控 App 往往只能将用户引导至广义的目的地（如某产业园），而无法提供地库、楼层及桩位的微观精准引导。当车主急需充电时，极易因“找桩、找车位”引发严重的行车摩擦力与时间损耗。
+                      </p>
+                      <p className="text-xs text-[#94a3b8] leading-relaxed font-light">
+                        <strong>网点静态信息堆砌，缺乏动态服务感知</strong>：普通的充电桩推荐列表通常只展示基础距离，不外显实时空闲状态（如是否有空闲枪头、休息区是否开放等）。这种信息的不透明导致用户盲目前往后面临排队、无桩可用的服务断层风险。
+                      </p>
+                   </div>
+
+                   {/* DESIGN APPROACH */}
+                   <div className="p-6 rounded-2xl bg-emerald-950/10 border border-emerald-500/10 space-y-3">
+                      <div className="flex items-center gap-2 text-[#00E676] text-sm font-medium">
+                         <span className="text-xs">💡</span> 设计思路 (Design Approach)
+                      </div>
+                      <p className="text-xs text-slate-400 leading-relaxed font-light">
+                        <strong>轻量化数字微地图与无感空间锚定</strong>：在应用中，界面顶部创新性引入 *快速查找 · 智能出行补能* 卡片。利用卫星无感厘米级高精定位技术，将文字锚点直接精确至 <span className="text-[#00E5FF]">深圳市高新产业中核心产业园B5停车场</span>。地图内直观渲染 我的车 · 当前点 空间相对位置，并外显 *科技港快充 1.2km* 与 *免费合作桩 2.4km* 标签，通过极极简的轻地图交互，实现宏观导航向微观车道/车位级转译的无缝过渡。
+                      </p>
+                      <p className="text-xs text-slate-400 leading-relaxed font-light">
+                        <strong>基于“智能流”的主动式网点推荐与一键触达（Dynamic Feed Card）</strong>：
+                        <br />
+                        • <strong>深度信息外显，消除决策顾虑</strong>：下方 *智能推送补能网点* 模块打破传统列表样式，采用高 Scannability 的动态信息网格。例如：*境行高压分布式直流超充网络 👑 01* 卡片中，直接透出 *空闲超高压液冷枪柱 12 根 · 空闲休息室已到位* 等核心高价值信息；*万象天成高速极速直流桩群* 则外显 *平均功率 240kW | 商超地下免费免单停*，让车主在未出发前即可完成确定性的心理预期建立。
+                        <br />
+                        • <strong>高对比 CTA 全局唤醒</strong>：每个推荐卡片右侧部署高对比度的 *导航* 黑色按钮，作为全局核心行动点（CTA），支持车主一键将最优补能流无缝同步至车机 HMI 大屏，达成跨端服务连续性的完美闭环。
+                      </p>
+                   </div>
+                </div>
+
+                {/* Interactive Map Feed Right */}
+                <div className="lg:col-span-6 space-y-4">
+                   <div className="p-6 rounded-[2.5rem] bg-[#090e1a] border border-white/5 space-y-5">
+                      <div className="flex justify-between items-center pb-2 border-b border-white/5">
+                         <div>
+                            <h4 className="text-xs font-mono text-cyan-400 uppercase tracking-widest">快速查找 · 智能出行补能</h4>
+                            <p className="text-[10px] text-slate-400 font-sans mt-0.5">高精全场景感知网格系统</p>
+                         </div>
+                         <button 
+                           onClick={() => {
+                             setHudSynced(true);
+                             setTimeout(() => setHudSynced(false), 2500);
+                           }}
+                           className="px-3 py-1.5 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-full font-mono text-[9px] uppercase tracking-wider transition-colors"
+                         >
+                            SYNC TO AUTOMOBILE
+                         </button>
+                      </div>
+
+                      {/* Micro Map Mock */}
+                      <div className="h-44 rounded-2xl bg-black/40 border border-[#00E5FF]/20 relative overflow-hidden flex flex-col justify-end p-3">
+                         {/* Visual radar animation effect */}
+                         <div className="absolute inset-0 bg-radial-gradient opacity-20" />
+                         <div className="absolute top-1/2 left-1/3 w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping" />
+                         <div className="absolute top-1/2 left-1/3 w-2 h-2 rounded-full bg-cyan-500" />
+                         <div className="absolute top-1/4 right-1/4 w-2 h-2 rounded-full bg-emerald-400" />
+                         
+                         {/* Map Pins overlay */}
+                         <div className="absolute top-6 left-12 px-2 py-1 bg-black/80 border border-cyan-400/30 rounded-lg text-[8px] font-mono whitespace-nowrap">
+                            科技港快充 1.2km
+                         </div>
+                         <div className="absolute bottom-12 right-12 px-2 py-1 bg-black/80 border border-emerald-400/30 rounded-lg text-[8px] font-mono whitespace-nowrap">
+                            免费合作桩 2.4km
+                         </div>
+
+                         <div className="relative z-10 p-3 rounded-xl bg-black/80 border border-white/10 backdrop-blur-md">
+                            <p className="text-[9px] font-mono text-slate-400">当前精确对准：</p>
+                            <p className="text-xs font-sans text-white font-medium">深圳市高新产业中核心产业园B5停车场</p>
+                         </div>
+                      </div>
+
+                      {/* Recommend feeds */}
+                      <div className="space-y-3">
+                         <span className="text-xs font-mono text-slate-400 block">智能推送补能网点 (Dynamic Feed Card)</span>
+                         
+                         {/* Feed item 1 */}
+                         <div className="p-3.5 rounded-2xl bg-black/40 border border-[#00d1ff]/20 flex justify-between items-center gap-4">
+                            <div className="space-y-1 text-xs">
+                               <div className="flex items-center gap-1.5">
+                                  <span className="font-semibold text-white">境行高压分布式直流超充网络 👑 01</span>
+                                  <span className="px-1.5 py-0.5 bg-yellow-400/10 text-yellow-400 text-[8px] rounded">EXCLUSIVE</span>
+                               </div>
+                               <p className="text-[10px] text-cyan-400 font-medium">空闲超高压液冷枪柱 12 根 · 空闲休息室已到位</p>
+                               <p className="text-[8px] font-mono text-slate-500">距您 1.2 km | 平均功率 480kW</p>
+                            </div>
+                            <button className="px-3.5 py-2 bg-white text-black hover:bg-slate-200 text-[10px] font-semibold rounded-lg font-mono tracking-wider transition-colors">
+                               导航
+                            </button>
+                         </div>
+
+                         {/* Feed item 2 */}
+                         <div className="p-3.5 rounded-2xl bg-black/40 border border-white/5 flex justify-between items-center gap-4">
+                            <div className="space-y-1 text-xs">
+                               <div className="flex items-center gap-1.5">
+                                  <span className="font-semibold text-slate-300">万象天成高速极速直流桩群</span>
+                               </div>
+                               <p className="text-[10px] text-slate-400">平均功率 240kW | 商超地下免费免单停</p>
+                               <p className="text-[8px] font-mono text-slate-500">距您 2.4 km | 闲置枪 4 根</p>
+                            </div>
+                            <button className="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-white text-[10px] font-mono tracking-wider transition-colors rounded-lg">
+                               导航
+                            </button>
+                         </div>
+                      </div>
+
+                      {/* HUD sync confirmation visual toast */}
+                      {hudSynced && (
+                         <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-center text-xs font-mono animate-fadeIn font-sans">
+                            ✔️ 补能服务流（500A超级充网络）成功无感同步至车载 HMI Hanger 屏幕上锁对齐！
+                         </div>
+                      )}
+                   </div>
+                   
+                   <ImageRenderer 
+                      title="第三部分智能补能发现中枢：2.png" 
+                      src="/2.png" 
+                      className="w-full aspect-[16/10] shadow-2xl mt-4" 
+                   />
+                </div>
+
+             </div>
+          </div>
+        </section>
+
+        {/* BLOCK 4: 实时座舱状态提示系统 */}
+        <section className="relative px-6 md:px-16 lg:px-24 py-24 bg-white/[0.002]">
+          <div className="max-w-7xl mx-auto">
+             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                
+                {/* Visual Interactivity Left */}
+                <div className="lg:col-span-6 space-y-6">
+                   <div className="relative p-6 rounded-[2.5rem] border border-white/5 bg-[#090b14] shadow-[0_0_80px_rgba(6,182,212,0.12)] space-y-6 overflow-hidden">
+                      {/* Grid background mesh mimicking HUD overlays */}
+                      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none" />
+                      
+                      <div className="flex justify-between items-center border-b border-white/5 pb-4 relative z-10">
+                         <span className="text-xs font-mono text-cyan-400 tracking-wider">PROACTIVE ALGORITHM STATUS VIEWER</span>
+                         <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" />
+                      </div>
+
+                      <div className="space-y-4 relative z-10">
+                         <span className="text-xs font-mono text-slate-400 block">实时微光悬挂气泡提示组</span>
+                         
+                         {/* Transparent Floating alert widget for Satellite realignment */}
+                         <div className="p-4 rounded-2xl bg-black/70 border border-[#00d1ff]/30 shadow-2xl backdrop-blur-xl space-y-3">
+                            <div className="flex items-center justify-between text-xs font-mono text-cyan-400">
+                               <span>🧭 境行·INJOY 实时座舱状态</span>
+                               <span>SYSTEM AUTO-FIX</span>
+                            </div>
+                            <h5 className="text-sm font-medium text-white">卫星差分坐标图层重新解算对齐</h5>
+                            <p className="text-[11px] text-slate-400 leading-relaxed font-light">
+                               为了在地下多重遮罩极窄区域实现更优等宽安全泊宿（20cm拼边缘），系统成功完成坐标校验，行车自愈图重置完成。
+                            </p>
+                            <div className="flex justify-between items-center pt-2 border-t border-white/5 text-[9px] font-mono text-slate-500">
+                               <span>精度误差 &lt; 0.02m</span>
+                               <span className="text-emerald-400">实时白盒算法传输中</span>
+                            </div>
+                         </div>
+
+                         {/* Mini list items explaining the triggers */}
+                         <div className="space-y-2 text-xs">
+                            <div className="p-3 bg-white/[0.01] border border-white/5 rounded-xl flex items-center justify-between">
+                               <div>
+                                  <p className="font-semibold text-slate-300">防淹没悬挂机制 (Non-blocking Floating)</p>
+                                  <p className="text-[10px] text-slate-500 mt-0.5">不强行中断搜寻路线，半透明底蕴对比一秒吸睛</p>
+                               </div>
+                               <span className="text-[#00E5FF] font-mono text-[10px]">ACTIVE</span>
+                            </div>
+                            <div className="p-3 bg-white/[0.01] border border-white/5 rounded-xl flex items-center justify-between">
+                               <div>
+                                  <p className="font-semibold text-slate-300">确定性心智暗示 (Trust Architecture)</p>
+                                  <p className="text-[10px] text-slate-500 mt-0.5">技术细节白盒公开，人车稳固信任搭建</p>
+                               </div>
+                               <span className="text-[#00E5FF] font-mono text-[10px]">READY</span>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                   
+                   <ImageRenderer 
+                      title="第四部分座舱状态系统展示：3.png" 
+                      src="/3.png" 
+                      className="w-full aspect-[16/10] shadow-2xl mt-4" 
+                   />
+                </div>
+
+                {/* Visual Description Right */}
+                <div className="lg:col-span-6 space-y-8">
+                   <div className="space-y-4">
+                      <div className="flex items-center gap-2 text-cyan-400">
+                        <span className="text-xs font-mono tracking-widest text-[#00E5FF]">PART 04 // ALGORITHM WHITEPAPER UX</span>
+                      </div>
+                      <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-white">
+                        境行 · INJOY 实时座舱状态提示系统
+                      </h2>
+                      <div className="h-[2px] w-12 bg-cyan-400" />
+                   </div>
+
+                   {/* DESIGN PAIN POINTS */}
+                   <div className="p-6 rounded-2xl bg-red-950/10 border border-red-500/10 space-y-3">
+                      <div className="flex items-center gap-2 text-red-400 text-sm font-medium">
+                         <span className="text-xs">❌</span> 设计痛点 (Design Pain Points)
+                      </div>
+                      <p className="text-xs text-slate-400 leading-relaxed font-light">
+                        <strong>黑盒化底层算法状态，引发系统信任危机</strong>：在高精地图导航、自动泊车或地下微观定位等高阶智驾算法运行过程中，底层数据的解算、对齐与更新往往处于“黑盒状态”。当系统发生定位修正或数据重算时，若缺乏即时且明确的白盒化感知，用户极易对当前的定位精度产生怀疑，进而引发极高的心理操作焦虑。
+                      </p>
+                      <p className="text-xs text-slate-400 leading-relaxed font-light">
+                        <strong>通知机制缺乏动态层级，易被淹没或造成过度干扰</strong>：传统车载或车控 App 的通知常常采用低辨识度的底部小字（Toast）或者强阻断式的全局居中弹窗。前者极易被车主的视觉盲区忽略，后者则会强行中断用户当前的补能网点检索链路，严重破坏了出行的服务连续性。
+                      </p>
+                   </div>
+
+                   {/* DESIGN APPROACH */}
+                   <div className="p-6 rounded-2xl bg-emerald-950/10 border border-emerald-500/10 space-y-3">
+                      <div className="flex items-center gap-2 text-[#00E676] text-sm font-medium">
+                         <span className="text-xs">💡</span> 设计思路 (Design Approach)
+                      </div>
+                      <p className="text-xs text-slate-400 leading-relaxed font-light">
+                        <strong>主动式“智驾流”状态白盒化设计（Proactive & Transparent UX）</strong>：在设计重构中，系统捕获到空间算法的底层动态后，立即以“境行·INJOY 实时座舱状态”为主体进行前瞻性告知。通过文案 <span className="text-[#00E5FF] font-semibold">🧭 卫星差分坐标图层重新解算对齐</span>，将高精定位系统的自愈过程透明化呈现。不仅向车主传递了精准的系统运转意图，更通过“确定性”的技术词汇建立了极其稳固的人机信任（Trust Building）桥梁。
+                      </p>
+                      <p className="text-xs text-slate-400 leading-relaxed font-light">
+                        <strong>轻量化非阻断式微光悬浮悬挂（Floating Motion & Micro Glow）</strong>：
+                        <br />
+                        • <strong>高 scannability 视觉层级</strong>：提示组件打破常规布局，采用高雅的深黑色半透明微光卡片，悬浮叠置于地图图层上方。其色彩与下方的浅色补能列表形成鲜明的明暗对比（High Contrast），确保车主在下滑浏览、筛选充电网点时，视线能第一秒精准捕捉系统状态。
+                        <br />
+                        • <strong>非阻断式的交互克制</strong>：该状态组件在顶部轻量化常驻并提供微小的关闭按钮（X），它不强制阻断用户对下方“境行高压分布式直流超充网络”等核心卡片的触控和导航操作，完美遵循了数据渐进式披露（Progressive Disclosure）与无感交互原则。
+                      </p>
+                   </div>
+                </div>
+
+             </div>
+          </div>
+        </section>
+
+        {/* BLOCK 5: 车友大本营与生态社区 */}
+        <section className="relative px-6 md:px-16 lg:px-24 py-24">
+          <div className="max-w-7xl mx-auto">
+             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                
+                {/* Visual Description Left */}
+                <div className="lg:col-span-6 space-y-8">
+                   <div className="space-y-4">
+                      <div className="flex items-center gap-2 text-cyan-400">
+                        <span className="text-xs font-mono tracking-widest text-[#00E5FF]">PART 05 // COMMUNITY CO-CREATION</span>
+                      </div>
+                      <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-white">
+                        境行 · INJOY 车友大本营与生态社区
+                      </h2>
+                      <div className="h-[2px] w-12 bg-cyan-400" />
+                   </div>
+
+                   {/* DESIGN PAIN POINTS */}
+                   <div className="p-6 rounded-2xl bg-red-950/10 border border-red-500/10 space-y-3">
+                      <div className="flex items-center gap-2 text-red-400 text-sm font-medium">
+                         <span className="text-xs">❌</span> 设计痛点 (Design Pain Points)
+                      </div>
+                      <p className="text-xs text-[#f1f5f9] leading-relaxed font-light">
+                        <strong>传统车友社区信息杂乱，软硬件价值链脱节</strong>：许多新能源品牌的车友社区往往流于形式，灌水内容严重，且用户的真实用车反馈（如特定天气下的硬件表现、极限场景的智驾体验）缺乏高 Scannability 的视觉卡片归纳，导致核心高价值口碑被淹没在冗余的社交碎片中。
+                      </p>
+                      <p className="text-xs text-slate-400 leading-relaxed font-light">
+                        <strong>用户身份标签模糊，缺乏圈层信任感与共鸣</strong>：普通社区中无法一眼识别发言者的“车主身份”或“专业属性”（例如是首批车主还是专业测评师）。这种信息不对称降低了内容的权威性，车主之间难以快速建立起基于共同车机、算法、生活方式的情感链接与社群粘性。
+                      </p>
+                   </div>
+
+                   {/* DESIGN APPROACH */}
+                   <div className="p-6 rounded-2xl bg-[#032e18] bg-opacity-30 border border-emerald-500/15 space-y-3">
+                      <div className="flex items-center gap-2 text-[#00E676] text-sm font-medium">
+                         <span className="text-xs">💡</span> 设计思路 (Design Approach)
+                      </div>
+                      <p className="text-xs text-slate-400 leading-relaxed font-light">
+                        <strong>基于“身份锚定”的精细化内容流卡片架构（Identity & Trust Anchoring）</strong>：社区流采用了模块化聚合卡片设计，并对发言车主实施显性化的全场景标签管理。
+                        <br />
+                        • <strong>种子车主圈层</strong>：首个动态透出“上海车友 · IN_J99”，并附带副标题标签 <span className="text-[#00E5FF] font-semibold">境行首批创始车主</span>。文案通过真实场景（“394km WLTP 通勤与露营”、“梅雨季节等离子自净神器”）将产品硬核功能无缝转译为高感官的生活方式叙事。
+                        <br />
+                        • <strong>硬核极客圈层</strong>：第二个动态聚焦“首测官 · 极地大轮毂”，并加持深度极客标签 <span className="text-cyan-400 font-semibold">纯电独立算法实验室</span>。其文案通过极极具说服力的指标数据（“两侧间隙不到 20cm 的极限狭窄立柱停车”、“长按直线召回泊车平贴入库”），将抽象的智驾算法能力具象化，以极高的信任度击中潜在用户的核心痛点。
+                      </p>
+                      <p className="text-xs text-slate-400 leading-relaxed font-light">
+                        <strong>克制且聚焦的社交微互动体系（Lean Engagement System）</strong>：界面底部平滑承接极极简的“赞/评论”数据外显，去除了多余的视觉噪音，引导用户将视线聚焦于“车友大本营 · 境行社区”的核心高品质 UGC 内容，通过高Scannability的排版完美达成品牌口碑沉淀与高粘度用户生态闭环。
+                      </p>
+                   </div>
+                </div>
+
+                {/* Interactive Feed Stream Right */}
+                <div className="lg:col-span-6 space-y-4">
+                   <div className="p-6 rounded-[2.5rem] bg-[#080d16] border border-white/5 space-y-4">
+                      <div className="flex items-center justify-between border-b border-white/5 pb-2">
+                         <span className="text-xs font-mono text-cyan-400 tracking-wider">境行社区 · HIGHLIGHT UGC FEED</span>
+                         <span className="text-[10px] font-mono text-slate-500">24h Hot</span>
+                      </div>
+
+                      {/* Post 1 */}
+                      <div className="p-4 rounded-2xl bg-black/40 border border-white/5 hover:border-[#00d1ff]/20 transition-all space-y-3">
+                         <div className="flex justify-between items-start">
+                            <div>
+                               <div className="flex items-center gap-2">
+                                  <h5 className="text-xs font-semibold text-white">上海车友 · IN_J99</h5>
+                                  <span className="px-1.5 py-0.5 bg-cyan-400/10 text-cyan-400 text-[8px] font-mono rounded">境行首批创始车主</span>
+                               </div>
+                               <p className="text-[9px] text-slate-500 mt-0.5">上海 204kmWLTP 通勤探索者</p>
+                            </div>
+                            <span className="text-[10px] text-slate-500 font-mono">1.5h ago</span>
+                         </div>
+                         <p className="text-xs text-slate-300 leading-relaxed font-light">
+                            “刚刚完成了 394km WLTP 的长线跨区通勤与湿地野营，不得不说，新一代底盘配上除霾等离子自净，在梅雨交替时简直是神一般的存在！零风感空调能安睡一整晚。”
+                         </p>
+                         <div className="flex items-center justify-between pt-2 border-t border-white/5">
+                            <span className="text-[10px] font-mono text-slate-500">🏷️ #座舱高感空气净化</span>
+                            <button 
+                              onClick={() => toggleLike('post1')}
+                              className={`flex items-center gap-1.5 transition-all text-xs font-mono ${liked.post1 ? 'text-[#00E5FF]' : 'text-slate-400'}`}
+                            >
+                               <span>👍</span>
+                               <span>{likes.post1}</span>
+                            </button>
+                         </div>
+                      </div>
+
+                      {/* Post 2 */}
+                      <div className="p-4 rounded-2xl bg-black/40 border border-white/5 hover:border-[#00d1ff]/20 transition-all space-y-3">
+                         <div className="flex justify-between items-start">
+                            <div>
+                               <div className="flex items-center gap-2">
+                                  <h5 className="text-xs font-semibold text-white">首测官 · 极地大轮毂</h5>
+                                  <span className="px-1.5 py-0.5 bg-emerald-400/10 text-emerald-400 text-[8px] font-mono rounded">纯电独立算法实验室</span>
+                               </div>
+                               <p className="text-[9px] text-slate-500 mt-0.5">算法深度内测组成员</p>
+                            </div>
+                            <span className="text-[10px] text-slate-500 font-mono">3.2h ago</span>
+                         </div>
+                         <p className="text-xs text-slate-300 leading-relaxed font-light">
+                            “两侧间隙不到 20cm 的极限地下极窄圆柱车位，手控直线召回完全不掉帧。车身自愈毫米精度激光解算很白盒很诚实，底盘气闭姿态调校完全平息了盲区焦虑。”
+                         </p>
+                         <div className="flex items-center justify-between pt-2 border-t border-white/5">
+                            <span className="text-[10px] font-mono text-slate-500">🏷️ #智能算法遥控泊车</span>
+                            <button 
+                              onClick={() => toggleLike('post2')}
+                              className={`flex items-center gap-1.5 transition-all text-xs font-mono ${liked.post2 ? 'text-[#00E5FF]' : 'text-slate-400'}`}
+                            >
+                               <span>👍</span>
+                               <span>{likes.post2}</span>
+                            </button>
+                         </div>
+                      </div>
+                   </div>
+                   
+                   <div className="grid grid-cols-2 gap-4">
+                      <ImageRenderer 
+                         title="第五部分车友社区展示配图：4.png" 
+                         src="/4.png" 
+                         className="w-full aspect-[16/10] shadow-xl" 
+                      />
+                      <ImageRenderer 
+                         title="第五部分车友社区备用配图：5.png" 
+                         src="/5.png" 
+                         className="w-full aspect-[16/10] shadow-2xl" 
+                      />
+                   </div>
+                </div>
+
+             </div>
+          </div>
+        </section>
+
+        {/* BLOCK 6: 官方无界精选商城 */}
+        <section className="relative px-6 md:px-16 lg:px-24 py-24 bg-white/[0.005]">
+          <div className="max-w-7xl mx-auto">
+             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                
+                {/* Visual Interactivity Left */}
+                <div className="lg:col-span-6 space-y-6">
+                   <div className="p-8 rounded-[3rem] border border-white/5 bg-[#070b13] space-y-6 shadow-[0_0_80px_rgba(6,182,212,0.1)]">
+                      <div className="flex justify-between items-center border-b border-white/5 pb-3">
+                         <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest">BOUTIQUE PREMIUM DESIGN SHOP</span>
+                         <span className="px-2 py-0.5 bg-[#00E5FF]/20 text-[#00E5FF] text-[8px] font-mono rounded">2026 IN-JOY ACC</span>
+                      </div>
+
+                      {/* Store Grid */}
+                      <div className="grid grid-cols-2 gap-4">
+                         {/* Product Item 1 */}
+                         <div className="p-4 rounded-2xl bg-black/40 border border-white/5 hover:border-[#00d1ff]/20 transition-all flex flex-col justify-between h-72">
+                            <div className="space-y-2">
+                               <div className="flex justify-between items-start">
+                                  <span className="px-1.5 py-0.5 bg-black text-white border border-white/10 text-[8px] font-mono rounded">HOT</span>
+                                  <span className="text-[10px] font-mono text-[#00E5FF] font-semibold">⚡ CHARGING</span>
+                               </div>
+                               <h5 className="text-xs font-semibold text-slate-200 mt-2 leading-relaxed">
+                                  7kW 智感家用智能双模充电桩 (安全防火款)
+                               </h5>
+                               <p className="text-[9px] text-slate-500 font-sans leading-relaxed">
+                                  集成温控预警，支持车侧无感识别对齐，多重漏电绝缘等级防护认证。
+                               </p>
+                            </div>
+                            <div className="pt-3 border-t border-white/5 flex items-center justify-between gap-2">
+                               <span className="text-xs font-mono text-cyan-400 font-semibold">¥ 2,999</span>
+                               <button 
+                                 onClick={() => setOrderedProduct('7kW 智感家用智能双模充电桩')}
+                                 className="px-3 py-1.5 bg-[#00e5ff] text-black text-[9px] font-bold rounded hover:bg-cyan-300 font-mono tracking-wider uppercase transition-colors"
+                               >
+                                  订购
+                               </button>
+                            </div>
+                         </div>
+
+                         {/* Product Item 2 */}
+                         <div className="p-4 rounded-2xl bg-black/40 border border-white/5 hover:border-[#00d1ff]/20 transition-all flex flex-col justify-between h-72">
+                            <div className="space-y-2">
+                               <div className="flex justify-between items-start">
+                                  <span className="px-1.5 py-0.5 bg-black text-white border border-white/10 text-[8px] font-mono rounded">COMFORT</span>
+                                  <span className="text-[10px] font-mono text-[#00E5FF] font-semibold">🛋️ CABIN</span>
+                               </div>
+                               <h5 className="text-xs font-semibold text-slate-200 mt-2 leading-relaxed">
+                                  多维度高压全气压按摩多功能车载定制头枕
+                               </h5>
+                               <p className="text-[9px] text-slate-500 font-sans leading-relaxed">
+                                  搭载九档物理震源波。记忆回弹贴合，专车专用气源阻闭。
+                               </p>
+                            </div>
+                            <div className="pt-3 border-t border-white/5 flex items-center justify-between gap-2">
+                               <span className="text-xs font-mono text-cyan-400 font-semibold">¥ 489</span>
+                               <button 
+                                 onClick={() => setOrderedProduct('多维度高压全气压按摩车载定制头枕')}
+                                 className="px-3 py-1.5 bg-[#00e5ff] text-black text-[9px] font-bold rounded hover:bg-cyan-300 font-mono tracking-wider uppercase transition-colors"
+                               >
+                                  订购
+                               </button>
+                            </div>
+                         </div>
+                      </div>
+
+                      {/* Micro Dialog Confirmation */}
+                      {orderedProduct && (
+                         <div className="p-3.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono text-xs flex justify-between items-center animate-fadeIn font-sans">
+                            <span>🛒 已锁定 "${orderedProduct}" 意向订额！</span>
+                            <button onClick={() => setOrderedProduct(null)} className="text-white hover:text-red-400 font-bold ml-2">×</button>
+                         </div>
+                      )}
+                   </div>
+                   
+                   <ImageRenderer 
+                      title="第六部分商城生态展示配图：6.png" 
+                      src="/6.png" 
+                      className="w-full aspect-[16/10] shadow-2xl mt-4" 
+                   />
+                </div>
+
+                {/* Visual Description Right */}
+                <div className="lg:col-span-6 space-y-8">
+                   <div className="space-y-4">
+                      <div className="flex items-center gap-2 text-cyan-400">
+                        <span className="text-xs font-mono tracking-widest text-[#00E5FF]">PART 06 // INTUITIVE BOUTIQUE STORE</span>
+                      </div>
+                      <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-white">
+                        境行 · INJOY 官方无界精选商城
+                      </h2>
+                      <div className="h-[2px] w-12 bg-cyan-400" />
+                   </div>
+
+                   {/* DESIGN PAIN POINTS */}
+                   <div className="p-6 rounded-2xl bg-red-950/10 border border-red-500/10 space-y-3">
+                      <div className="flex items-center gap-2 text-red-400 text-sm font-medium">
+                         <span className="text-xs">❌</span> 设计痛点 (Design Pain Points)
+                      </div>
+                      <p className="text-xs text-slate-400 leading-relaxed font-light">
+                        <strong>车主精品生态的决策阻力高</strong>：智能汽车的周边硬件（如家用充电桩）与舒适奢享配件（如定制头枕）通常客单价较高且涉及技术参数。传统车控 App 的商城板块往往将其作为普通零售商品陈列，缺乏关键硬核指标（如功率、气压机制、安全认证）的即时外显，导致用户面临漫长的决策链路与高昂的信任成本。
+                      </p>
+                      <p className="text-xs text-slate-400 leading-relaxed font-light">
+                        <strong>传统双列布局信息过载与视觉杂乱</strong>：普通的电商双列流容易为了塞满空间而堆砌过多的视觉元素、斑驳的背景图和促销标签。在注重高级感的汽车品牌 App 中，这种设计会极大地破坏品牌的高品味调性，并降低用户的检索舒适度（Scannability）。
+                      </p>
+                   </div>
+
+                   {/* DESIGN APPROACH */}
+                   <div className="p-6 rounded-2xl bg-emerald-950/10 border border-emerald-500/10 space-y-3">
+                      <div className="flex items-center gap-2 text-[#00E676] text-sm font-medium">
+                         <span className="text-xs">💡</span> 设计思路 (Design Approach)
+                      </div>
+                      <p className="text-xs text-slate-400 leading-relaxed font-light">
+                        <strong>平衡留白与信息外显的“呼吸感”双列网格（Boutique Matrix Grid）</strong>：在商城版面规划中，官方无界精选商城 采用了极致克制的卡片美学。背景使用低饱和度的深邃墨色承托，商品图采用悬浮式微缩拟物 3D 渲染，四周给予极其奢侈的呼吸留白，以一种极简的高级感强化了“精品（Boutique）”的品牌生态定位。
+                      </p>
+                      <p className="text-xs text-slate-400 leading-relaxed font-light">
+                        <strong>基于安全与舒适硬核锚点的“零冗余”文案框架（High-Value Product Copy）</strong>：
+                        <br />
+                        • <strong>补能硬件锚点</strong>：左侧卡片直击车主的核心安全顾虑，文案前置关键参数，精准定名 <span className="text-[#00E5FF] font-semibold">7kW 智感家用智能双模充电桩 (安全防火款)</span>。配合微小的 *热卖* 黑色微标，不渲染促销焦虑，仅靠清晰的产品性能与安全锚点驱动车主理性决策。
+                        <br />
+                        • <strong>座舱生态锚点</strong>：右侧卡片完美呼应智能座舱的多维体验，命名为 <span className="text-[#00E5FF] font-semibold">多维度高压全气压按摩多功能车载定制头枕</span>。将“气压按摩、定制、多维度”等物理舒适属性转化为高可读性的标签文本，直击高端车主对长途驾驶舒适度的升级刚需。
+                      </p>
+                      <p className="text-xs text-slate-400 leading-relaxed font-light">
+                        <strong>高聚合、低触达路径 of CTA 行动点</strong>：每个商品卡片底部将价格（如 <span className="font-semibold text-cyan-400">¥ 2,999</span> 与 <span className="font-semibold text-cyan-400">¥ 489</span>）与黑底白字的 <span className="px-2 py-1 bg-cyan-400 text-black rounded font-bold">订购</span> 胶囊按钮并置。没有层级繁琐的“加入购物车”中间态，而是通过一键直达的极简消费链路，完美达成车机硬件与精品配件的商业转化闭环。
+                      </p>
+                   </div>
+                </div>
+
+             </div>
+          </div>
+        </section>
+
+        {/* FINAL EXIT */}
+        <section className="relative h-[80vh] flex flex-col items-center justify-center border-t border-white/5 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-t from-cyan-950/20 via-transparent to-transparent opacity-50 pointer-events-none" />
+          <motion.div
+             initial={{ opacity: 0, scale: 0.9 }}
+             whileInView={{ opacity: 1, scale: 1 }}
+             viewport={{ once: true }}
+             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+             className="relative z-10 flex flex-col items-center gap-16 group cursor-pointer animate-fadeIn"
+             onClick={() => navigate('/')}
+          >
+            <div className="text-[10px] font-mono tracking-[2em] text-white/20 uppercase ml-12">Transmission Terminal</div>
+            <h2 className="text-4xl md:text-8xl font-medium tracking-tighter text-white/10 group-hover:text-[#00e5ff] transition-all duration-1000 text-center px-10">
+              EXIT CASE STUDY
+            </h2>
+            <div className="w-20 h-20 rounded-full border border-white/10 flex items-center justify-center glass group-hover:border-cyan-400/40 group-hover:scale-110 transition-all duration-700">
+               <ArrowLeft className="w-6 h-6 text-slate-400 group-hover:text-[#00E5FF] transition-colors" />
+            </div>
+          </motion.div>
+        </section>
+
+        {/* FOOTER */}
+        <footer className="px-10 py-24 border-t border-white/5 bg-black flex flex-col items-center gap-8">
+           <div className="flex items-center gap-6">
+              <div className="h-[1px] w-12 bg-white/10" />
+              <div className="text-[10px] font-mono tracking-[1.5em] text-white/20 uppercase">INJOY EV HMI PORTFOLIO</div>
+              <div className="h-[1px] w-12 bg-white/10" />
+           </div>
+           <div className="text-[10px] font-mono text-white/40 uppercase text-center max-w-lg leading-relaxed tracking-[0.2em]">
+              This project is part of the INJOY Smart Cockpit Ecosystem Development. All interface materials are standardized. / 2026
+           </div>
+        </footer>
+      </div>
+    );
   }
 
   return (

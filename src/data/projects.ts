@@ -288,5 +288,35 @@ export const projects: Project[] = [
       { label: '满意度', value: '4.8' },
     ],
     sections: []
+  },
+  {
+    id: 'fate-mystery',
+    title: '命运迷局 (FATE MYSTERY)',
+    subtitle: '跨端（iPad/PC/Mobile）自适应策略解谜 AI Native UX 系统',
+    description: '为经典的蒸汽发条美学与因果古典秘学交织搭建的跨端高保真全场景交互。底层引入 COGNITION HUD AI 伴随助手与命运大君·因果天平神启模块，全天候侦测玩家理智值（SAN）并动态规划双轨解谜。',
+    color: '#FF9300',
+    image: '/fate_mystery_showcase.jpg',
+    tags: ['游戏 AI 智能体', '跨端自适应', '深浅折跃'],
+    metrics: [
+      { label: '多端认知载荷降低', value: '35%' },
+      { label: '局内决策步数降幅', value: '42%' },
+      { label: '心流留存(D7)', value: '68%' }
+    ],
+    sections: []
+  },
+  {
+    id: 'injoy',
+    title: '境行 (INJOY)',
+    subtitle: '智能出行座舱 HMI 与 手机端互联生态交互',
+    description: '打造主动式智能人文出行系统。16:9 智能大屏结合地图与高精泊车设定，配合手机车控 App 全景胎压、减碳里程监控与主动场景微弹窗交互，全方位实现极低信息认知负荷。',
+    color: '#00D1FF',
+    image: '/injoy_showcase.jpg',
+    tags: ['座舱 HMI', '手车互联', '主动交互'],
+    metrics: [
+      { label: '信息过载载荷降幅', value: '50%' },
+      { label: '补能决策骤减率', value: '80%' },
+      { label: '异常安全拦截时效', value: '2.4s' }
+    ],
+    sections: []
   }
 ];

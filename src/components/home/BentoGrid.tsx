@@ -41,6 +41,13 @@ export const BentoGrid: React.FC = () => {
         <div className="md:col-span-6 lg:col-span-4">
           <ProjectCard project={projects[6]} />
         </div>
+
+        <div className="md:col-span-6 lg:col-span-6">
+          <ProjectCard project={projects[7]} />
+        </div>
+        <div className="md:col-span-6 lg:col-span-6">
+          <ProjectCard project={projects[8]} />
+        </div>
       </div>
     </section>
   );

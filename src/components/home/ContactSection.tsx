@@ -21,9 +21,6 @@ export const ContactSection: React.FC = () => {
                 <span className="text-zinc-400 font-light italic text-2xl lg:text-4xl">Let's build something together</span>
               </h2>
             </div>
-            <p className="text-lg text-zinc-500 font-light max-w-md leading-relaxed">
-              <sub>如果您有跨境设计、AI 产品咨询或全链路交互重构的需求，欢迎随时垂询。</sub>
-            </p>
           </motion.div>
 
           <motion.div 
